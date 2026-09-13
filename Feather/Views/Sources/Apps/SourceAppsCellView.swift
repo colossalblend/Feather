@@ -19,17 +19,26 @@ struct SourceAppsCellView: View {
 	let source: ASRepository
 	let app: ASRepository.App
 	
+	/// Мини-значок в углу иконки: fake-иконка приложения, когда крупно
+	/// стоит настоящий OriginalIcon; иначе — значок источника, как было.
+	private var _badgeURL: URL? {
+		app.originalIconURL != nil ? app.iconURL : source.currentIconURL
+	}
+
 	var body: some View {
 		VStack {
 			HStack(spacing: 2) {
+				// Наш мод: если есть OriginalIcon — крупно рисуем его (настоящая
+				// иконка сервиса), а fake iconURL становится мини-значком в углу.
+				// Без OriginalIcon — прежний вид: iconURL крупно, значок источника.
 				FRIconCellView(
 					title: app.currentName,
 					subtitle: Self.appDescription(app: app),
-					iconUrl: app.iconURL
+					iconUrl: app.originalIconURL ?? app.iconURL
 				)
 				.overlay(alignment: .bottomLeading) {
-					if let iconURL = source.currentIconURL {
-						LazyImage(url: iconURL) { state in
+					if let badge = _badgeURL {
+						LazyImage(url: badge) { state in
 							if let image = state.image {
 								image
 									.appIconStyle(size: 20, isCircle: true, background: Color(uiColor: .secondarySystemBackground))

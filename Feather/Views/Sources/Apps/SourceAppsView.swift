@@ -40,16 +40,20 @@ struct SourceAppsView: View {
 	@State private var _searchText = ""
 
 	private var _navigationTitle: String {
-		if object.count == 1 {
-			object[0].name ?? .localized("Unknown")
-		} else {
-			.localized("%lld Sources", arguments: object.count)
-		}
+		if let categoryFilter { return categoryFilter }
+		if object.count == 1 { return object[0].name ?? .localized("Unknown") }
+		return .localized("%lld Sources", arguments: object.count)
 	}
 	
 	var object: [AltSource]
 	@ObservedObject var viewModel: SourcesViewModel
+	// categoryFilter обязан идти СРАЗУ после viewModel: он попадает в
+	// memberwise init, а @State ниже — нет. Порядок держит сигнатуру
+	// SourceAppsView(object:viewModel:) для старых вызовов рабочей.
+	var categoryFilter: String? = nil
 	@State private var _sourceContexts: [SourceRepositoryContext]?
+	@State private var _categories: [SourceCategory] = []
+	@State private var _isCategoriesPresenting = false
 	
 	// MARK: Body
 	var body: some View {
@@ -63,6 +67,7 @@ struct SourceAppsView: View {
 					searchText: $_searchText,
 					sortOption: $_sortOption,
 					sortAscending: $_sortAscending,
+					categoryFilter: categoryFilter,
 					onSelect: {self._selectedRoute = $0}
 				)
 				.ignoresSafeArea()
@@ -110,6 +115,18 @@ struct SourceAppsView: View {
 			}
 		}
 		.toolbar {
+			// Кнопка категорий только в неотфильтрованном списке — иначе из
+			// категории снова открывается экран категорий, шиты рекурсивно.
+			if categoryFilter == nil, !_categories.isEmpty {
+				NBToolbarButton(
+					systemImage: "square.grid.3x3.fill",
+					style: .icon,
+					placement: .topBarTrailing
+				) {
+					_isCategoriesPresenting = true
+				}
+			}
+
 			NBToolbarMenu(
 				systemImage: "line.3.horizontal.decrease",
 				style: .icon,
@@ -117,6 +134,13 @@ struct SourceAppsView: View {
 			) {
 				_sortActions()
 			}
+		}
+		.sheet(isPresented: $_isCategoriesPresenting) {
+			SourceCategoriesView(
+				object: object,
+				viewModel: viewModel,
+				categories: _categories
+			)
 		}
 		.onAppear {
 			if !hasLoadedOnce, viewModel.isFinished {
@@ -149,6 +173,8 @@ struct SourceAppsView: View {
 				return SourceRepositoryContext(sourceURL: source.sourceURL, repository: repository)
 			}
 			_sourceContexts = loadedSources
+			// Группировку по категориям считаем ровно здесь, не в body.
+			_categories = SourceCategory.build(from: loadedSources)
 			withAnimation(.easeIn(duration: 0.2)) {
 				isLoading = false
 			}

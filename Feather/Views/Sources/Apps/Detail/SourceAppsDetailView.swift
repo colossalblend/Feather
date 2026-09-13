@@ -131,7 +131,7 @@ struct SourceAppsDetailView: View {
 						}
 						
 						if let category = app.category {
-							_infoRow(title: .localized("Category"), value: category.capitalized)
+							_infoRow(title: .localized("Category"), value: category)
 						}
 						
 						if let version = app.currentVersion {

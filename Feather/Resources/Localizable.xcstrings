@@ -2683,6 +2683,23 @@
         }
       }
     },
+    "Categories" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категории"
+          }
+        }
+      }
+    },
     "Certificate" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -16940,6 +16957,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "签名"
+          }
+        }
+      }
+    },
+    "Single Apps" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Single Apps"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отдельные приложения"
           }
         }
       }

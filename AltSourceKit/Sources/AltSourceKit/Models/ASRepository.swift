@@ -167,6 +167,10 @@ extension ASRepository {
 
 		public var iconURL: URL?
 
+		/// Настоящая крупная иконка сервиса (наш мод). Приходит из sources.json
+		/// только для User-Agent Feather-BAB; у стоковых клиентов поля нет.
+		public var originalIconURL: URL?
+
 		public var tintColor: Color?
 
 		public var size: Int64?
@@ -260,6 +264,9 @@ extension ASRepository {
 
 			self.iconURL = try container.decode(URL.self, forKey: .iconURL)
 
+			self.originalIconURL =
+				try container.decodeIfPresent(URL.self, forKey: .originalIconURL)
+
 			self.tintColor =
 				try container.decodeIfPresent(Color.self, forKey: .tintColor)
 
@@ -349,6 +356,7 @@ extension ASRepository {
 			case developer = "developerName"
 			case versions, version, versionDate, date, versionDescription, downloadURL,
 			     localizedDescription, iconURL, tintColor, size, category, beta
+			case originalIconURL = "OriginalIcon"
 			case permissions, appPermissions
 			case screenshots, screenshotURLs
 			case marketplaceID

@@ -32,7 +32,7 @@ struct AppBankUpdateView: View {
 		.padding(.bottom, 20)
 		.presentationDetents([.height(430)])
 		.presentationDragIndicator(.visible)
-		.presentationCornerRadius(28)
+		.modifier(_SheetCorners())
 	}
 
 	private var _header: some View {
@@ -108,6 +108,18 @@ struct AppBankUpdateView: View {
 			} label: {
 				NBSheetButton(title: .localized("Close"))
 			}
+		}
+	}
+}
+
+
+/// Скругление шита появилось только в iOS 16.4, а Feather держит 16.0.
+private struct _SheetCorners: ViewModifier {
+	func body(content: Content) -> some View {
+		if #available(iOS 16.4, *) {
+			content.presentationCornerRadius(28)
+		} else {
+			content
 		}
 	}
 }

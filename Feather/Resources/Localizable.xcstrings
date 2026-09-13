@@ -161,6 +161,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld приложения"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld приложений"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld приложение"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld приложений"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -352,6 +382,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld дня"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld дней"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld день"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld дней"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -434,6 +494,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie pokazano %lld wymaganych bibliotek systemowych"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld системных dylib не показаны."
           }
         },
         "tr" : {
@@ -580,6 +646,36 @@
             }
           }
         },
+        "ru" : {
+          "variations" : {
+            "plural" : {
+              "few" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld источника"
+                }
+              },
+              "many" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld источников"
+                }
+              },
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld источник"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%lld источников"
+                }
+              }
+            }
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -649,6 +745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "💜 To nie byłoby możliwe bez moich sponsorów!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💜 Без моих спонсоров ничего бы не вышло!"
           }
         },
         "tr" : {
@@ -722,6 +824,12 @@
             "value" : "O aplikacji"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О приложении"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -780,6 +888,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "O %@"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "О %@"
           }
         },
         "tr" : {
@@ -912,6 +1026,12 @@
             "value" : "Dodawaj i zarządzaj certyfikatami używanymi do podpisywania aplikacji."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавляйте сертификаты для подписи приложений и управляйте ими."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -983,6 +1103,12 @@
             "value" : "Dodaj źródło"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавить источник"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1040,6 +1166,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dodaje duże pole opisu aplikacji."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавляет локализованное описание приложения."
           }
         },
         "tr" : {
@@ -1125,6 +1257,12 @@
             "value" : "Zaawansowane"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дополнительно"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1170,6 +1308,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaawansowana metoda instalacji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Расширенный способ установки"
           }
         },
         "tr" : {
@@ -1243,6 +1387,12 @@
             "value" : "Wszystkie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1312,6 +1462,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wszystkie pliki Feather znajdują się w katalogu dokumentów, oto szybkie odnośniki do nich."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все файлы приложения лежат в папке документов — вот быстрые ссылки на них."
           }
         },
         "tr" : {
@@ -1386,6 +1542,12 @@
             "value" : "Wszystkie repozytoria"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все репозитории"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1455,6 +1617,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Alternatywne ikony"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Альтернативные иконки"
           }
         },
         "tr" : {
@@ -1529,6 +1697,12 @@
             "value" : "Inne świetne aplikacje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отличное приложение"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1600,6 +1774,12 @@
             "value" : "Funkcje aplikacji"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возможности приложения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1645,6 +1825,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ikona aplikacji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иконка приложения"
           }
         },
         "tr" : {
@@ -1807,6 +1993,12 @@
             "value" : "Nazwa AppID"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя AppID"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1876,6 +2068,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Archiwizacja i kompresja"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Архивация и сжатие"
           }
         },
         "tr" : {
@@ -2027,6 +2225,12 @@
             "value" : "Najlepszy"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Максимальное"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2169,6 +2373,12 @@
             "value" : "Zgłoś błąd"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сообщить об ошибке"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2240,6 +2450,12 @@
             "value" : "Paczka"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Бандл"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2297,6 +2513,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Domyślnie tłumaczone tytuły aplikacji nie będą zmieniane, jednak ta opcja to nadpisuje."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обычно локализованные названия приложения не меняются — этот параметр их всё же переопределяет."
           }
         },
         "tr" : {
@@ -2435,6 +2657,12 @@
             "value" : "Kategoria"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Категория"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2504,6 +2732,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Certyfikat"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сертификат"
           }
         },
         "tr" : {
@@ -2643,6 +2877,12 @@
             "value" : "Certyfikaty zaktualizowano pomyślnie."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сертификаты обновлены."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2714,6 +2954,12 @@
             "value" : "Zmień"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2755,6 +3001,12 @@
             "value" : "Zmień nazwę"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить имя"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2782,6 +3034,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sprawdź aktualizacje"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверить обновления"
           }
         }
       }
@@ -2823,6 +3081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Sprawdź czy odwołany"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверить отзыв"
           }
         },
         "tr" : {
@@ -2897,6 +3161,12 @@
             "value" : "Wybierz z plików"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать из файлов"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -2967,6 +3237,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wybierz ze zdjęć"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать из фото"
           }
         },
         "tr" : {
@@ -3040,6 +3316,12 @@
             "value" : "Zamknij"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Закрыть"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3097,6 +3379,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zakończono"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
           }
         },
         "tr" : {
@@ -3171,6 +3459,12 @@
             "value" : "Poziom kompresji"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уровень сжатия"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3228,6 +3522,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Skonfiguruj sposób instalacji aplikacji, poziom kompresji ZIP i niestandardowe modyfikacje aplikacji."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка способа установки, уровня сжатия и собственных изменений приложений."
           }
         },
         "tr" : {
@@ -3378,6 +3678,12 @@
             "value" : "Kopiuj URL do pobrania"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скопировать ссылки на загрузку"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3514,6 +3820,12 @@
             "value" : "Niestandardowy Kolor Motywu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свой цвет оформления"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3585,6 +3897,12 @@
             "value" : "Dostosowanie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройка"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -3636,6 +3954,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ciemny"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тёмная"
           }
         },
         "tr" : {
@@ -3707,6 +4031,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата"
           }
         },
         "tr" : {
@@ -3790,6 +4120,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Data dodania"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дата добавления"
           }
         },
         "tr" : {
@@ -3940,6 +4276,12 @@
             "value" : "Domyślny styl aplikacji, zawiera tylko fragment opisu."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обычный вид: только подзаголовок."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4088,6 +4430,12 @@
             "value" : "Usuń po podpisaniu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удалять после подписи"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4133,6 +4481,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Opis"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Описание"
           }
         },
         "tr" : {
@@ -4182,6 +4536,12 @@
             "value" : "Developer"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разработчик"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4215,6 +4575,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wyłącz Liquid Glass"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выключить Liquid Glass"
           }
         }
       }
@@ -4416,6 +4782,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Czy chcesz wyeksportować swój certyfikat do zewnętrznej aplikacji? Ta aplikacja będzie mogła podpisywać aplikacje za pomocą Twojego certyfikatu."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Передать сертификат другому приложению? Оно сможет подписывать программы твоим сертификатом."
           }
         },
         "tr" : {
@@ -4663,6 +5035,12 @@
             "value" : "Pobierz StosVPN"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачать StosVPN"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4696,6 +5074,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pobierz aktualizację"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачать обновление"
           }
         }
       }
@@ -4757,6 +5141,12 @@
             "value" : "Dylibs"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Библиотеки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4802,6 +5192,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dynamiczne Ikony"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Динамические иконки"
           }
         },
         "tr" : {
@@ -4861,6 +5257,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Włącz Liquid Glass"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включить Liquid Glass"
           }
         },
         "tr" : {
@@ -4934,6 +5336,12 @@
             "value" : "Włączenie ochrony doda losowy ciąg do identyfikatorów aplikacji, aby uniknąć oznaczenia przez Apple. Przy użyciu usługi podpisującej można to zignorować."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Любая защита добавляет случайную строку к идентификаторам подписываемых приложений — так Apple ID реже попадает под подозрение. При подписи через сервис это не нужно."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -4992,6 +5400,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podoba Ci się %@?"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нравится %@?"
           }
         },
         "tr" : {
@@ -5063,6 +5477,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wprowadź adres URL, aby rozpocząć weryfikację."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введи ссылку, чтобы начать проверку."
           }
         },
         "tr" : {
@@ -5211,6 +5631,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podaj adres"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введи ссылку на источник"
           }
         },
         "tr" : {
@@ -5373,6 +5799,12 @@
             "value" : "Uprawnienia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Права (entitlements)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5430,6 +5862,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Błąd"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ошибка"
           }
         },
         "tr" : {
@@ -5503,6 +5941,12 @@
             "value" : "Dodatkowe biblioteki"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Исполняемый файл"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5574,6 +6018,12 @@
             "value" : "Istniejące dylibs"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Уже добавленные библиотеки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5631,6 +6081,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksperymentalne"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Эксперименты"
           }
         },
         "tr" : {
@@ -5787,6 +6243,12 @@
             "value" : "Wygasa"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Истекает"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5859,6 +6321,12 @@
             "value" : "Eksportuj"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспорт"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -5910,6 +6378,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Eksportuj certyfikat"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Экспорт сертификата"
           }
         },
         "tr" : {
@@ -5983,6 +6457,12 @@
             "value" : "Nie udało się pobrać. Sprawdź połączenie z internetem i spróbuj ponownie."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось скачать. Проверь интернет и попробуй снова."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6040,6 +6520,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Polecane"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Избранное"
           }
         },
         "tr" : {
@@ -6111,6 +6597,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Funkcje"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Возможности"
           }
         },
         "tr" : {
@@ -6262,6 +6754,12 @@
             "value" : "Pliki"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файлы"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6331,6 +6829,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Filtruj według"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фильтр"
           }
         },
         "tr" : {
@@ -6404,6 +6908,12 @@
             "value" : "Wymuś lokalizację"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Принудительная локализация"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6473,6 +6983,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Biblioteki"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фреймворки"
           }
         },
         "tr" : {
@@ -6546,6 +7062,12 @@
             "value" : "Biblioteki i wtyczki"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фреймворки и плагины"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6617,6 +7139,12 @@
             "value" : "W pełni lokalnie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Полностью локально"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6674,6 +7202,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tryb Gry"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Игровой режим"
           }
         },
         "tr" : {
@@ -6806,6 +7340,12 @@
             "value" : "Pobierz"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -6875,6 +7415,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Uzyskaj dostęp do naszego prywatnego Discorda poprzez wsparcie, gdzie rozmawiamy o przyszłych aktualizacjach, wersjach beta i możliwościach poprawy doświadczeń."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержи проект и получи доступ в закрытый Discord: там обсуждают будущие обновления, беты и как сделать приложение лучше."
           }
         },
         "tr" : {
@@ -6949,6 +7495,12 @@
             "value" : "Pokaż informacje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сведения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7006,6 +7558,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zacznij od dodania pierwszego repozytorium."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начни с добавления первого репозитория."
           }
         },
         "tr" : {
@@ -7067,6 +7625,12 @@
             "value" : "Zacznij od importu Twojego pierwszego pliku IPA."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начни с загрузки первого IPA-файла."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7124,6 +7688,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Rozpocznij podpisywanie od zaimportowania pierwszego certyfikatu."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чтобы подписывать, загрузи первый сертификат."
           }
         },
         "tr" : {
@@ -7274,6 +7844,12 @@
             "value" : "Odwiedź nasze GitHub i zostaw gwiazdkę!"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загляни на наш GitHub и поставь звезду!"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7340,6 +7916,12 @@
           }
         },
         "pl" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat"
+          }
+        },
+        "ru" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Heartbeat"
@@ -7416,6 +7998,12 @@
             "value" : "Pomoc"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Помощь"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7485,6 +8073,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ukryte"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скрытые"
           }
         },
         "tr" : {
@@ -7647,6 +8241,12 @@
             "value" : "Prefiks identyfikatora"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Префикс идентификатора"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7718,6 +8318,12 @@
             "value" : "Identyfikatory"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Идентификаторы"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7771,6 +8377,12 @@
             "value" : "idevice"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "idevice"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -7816,6 +8428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ta metoda instalacji jest przeznaczona tylko dla zaawansowanych użytkowników!\n\nWymaga ona VPN i pliku parowania z komputera.\n\nZaleca się powrót do metody instalacji przez serwer."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "предупреждение idevice"
           }
         },
         "tr" : {
@@ -7875,6 +8493,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jeśli wystąpią jakiekolwiek problemy w aplikacji, zgłoś je za pośrednictwem repozytorium GitHub. Podczas zgłaszania problemu upewnij się, że podajesz szczegółowe informacje."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Если в приложении что-то сломалось, сообщи об этом в репозитории на GitHub. В сообщении опиши подробности."
           }
         },
         "tr" : {
@@ -8038,6 +8662,12 @@
             "value" : "Importuj plik certyfikatu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить файл сертификата"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8108,6 +8738,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importuj z plików"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить из файлов"
           }
         },
         "tr" : {
@@ -8182,6 +8818,12 @@
             "value" : "Importuj z adresu URL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить по ссылке"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8251,6 +8893,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Importuj plik parowania"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить файл сопряжения"
           }
         },
         "tr" : {
@@ -8324,6 +8972,12 @@
             "value" : "Importuj plik provisioning"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загрузить профиль подготовки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8393,6 +9047,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaimportowane"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загруженные"
           }
         },
         "tr" : {
@@ -8466,6 +9126,12 @@
             "value" : "Informacje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Инфо"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8513,6 +9179,12 @@
             "value" : "Informacje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сведения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8558,6 +9230,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Załaduj do rozszerzeń"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Внедрять в расширения"
           }
         },
         "tr" : {
@@ -8617,6 +9295,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Folder iniekcji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Папка внедрения"
           }
         },
         "tr" : {
@@ -8682,6 +9366,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ścieżka iniekcji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Путь внедрения"
           }
         },
         "tr" : {
@@ -8826,6 +9516,12 @@
             "value" : "Zainstaluj po podpisaniu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устанавливать после подписи"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -8859,6 +9555,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zainstaluj bieżącą wersję"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установить текущую версию"
           }
         }
       }
@@ -8900,6 +9602,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalacja"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Установка"
           }
         },
         "tr" : {
@@ -8973,6 +9681,12 @@
             "value" : "Typ instalacji"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип установки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9030,6 +9744,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Instalowanie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устанавливается"
           }
         },
         "tr" : {
@@ -9101,6 +9821,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "iPad pełny ekran"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Во весь экран на iPad"
           }
         },
         "tr" : {
@@ -9234,6 +9960,12 @@
             "value" : "Dołącz do nas na Discordzie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заходи в наш Discord"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9293,6 +10025,12 @@
             "value" : "Dowiedz się więcej o tym, jak skonfigurować repozytorium..."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее о том, как завести репозиторий…"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9332,6 +10070,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Mniej"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свернуть"
           }
         },
         "tr" : {
@@ -9406,6 +10150,12 @@
             "value" : "Biblioteka"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Библиотека"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9477,6 +10227,12 @@
             "value" : "Wygląd komórki biblioteki"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вид строк в библиотеке"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9528,6 +10284,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Jasny"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Светлая"
           }
         },
         "tr" : {
@@ -9602,6 +10364,12 @@
             "value" : "Minimalne wymagania"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Минимальные требования"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9671,6 +10439,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Różne"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разное"
           }
         },
         "tr" : {
@@ -9744,6 +10518,12 @@
             "value" : "Modyfikuj"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменить"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9789,6 +10569,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Więcej"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подробнее"
           }
         },
         "tr" : {
@@ -9874,6 +10660,12 @@
             "value" : "Nazwa"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -9943,6 +10735,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nowy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Новое"
           }
         },
         "tr" : {
@@ -10106,6 +10904,12 @@
             "value" : "Własna nazwa (opcjonalnie)"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Имя (необязательно)"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10163,6 +10967,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak aplikacji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет приложений"
           }
         },
         "tr" : {
@@ -10236,6 +11046,12 @@
             "value" : "Brak certyfikatu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет сертификата"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10295,6 +11111,12 @@
             "value" : "Brak certyfikatów"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет сертификатов"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10340,6 +11162,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak uprawnień do wyświetlenia."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Права не указаны."
           }
         },
         "tr" : {
@@ -10407,6 +11235,12 @@
             "value" : "Nie wybrano plików."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл не выбран."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10466,6 +11300,12 @@
             "value" : "Nie znaleziono żadnych bibliotek ani wtyczek."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Фреймворков и плагинов не найдено."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10523,6 +11363,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nie znaleziono żadnych ikon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Иконок не найдено."
           }
         },
         "tr" : {
@@ -10596,6 +11442,12 @@
             "value" : "Nie znaleziono pliku parowania, zaimportuj go."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл сопряжения не найден — загрузи его."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10641,6 +11493,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak wymienionych uprawnień prywatności."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешения не указаны."
           }
         },
         "tr" : {
@@ -10702,6 +11560,12 @@
             "value" : "Brak Repozytoriów"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет репозиториев"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -10747,6 +11611,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak źródeł do skopiowania"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нечего копировать"
           }
         },
         "tr" : {
@@ -10806,6 +11676,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Brak"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет"
           }
         },
         "tr" : {
@@ -10968,6 +11844,12 @@
             "value" : "Używaj tylko adresu localhost"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Только адрес localhost"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11039,6 +11921,12 @@
             "value" : "Otwórz"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11096,6 +11984,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otwórz [issue](https://github.com/khcrysalis/Feather/issues) na GitHubie, jeśli chcesz, aby Twoje źródło zostało wyróżnione."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Хочешь, чтобы твой источник попал в подборку — открой [задачу](https://github.com/khcrysalis/Feather/issues) на GitHub."
           }
         },
         "tr" : {
@@ -11169,6 +12063,12 @@
             "value" : "Otwórz archiwa"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть архивы"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11240,6 +12140,12 @@
             "value" : "Otwórz certyfikaty"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть сертификаты"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11309,6 +12215,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Otwórz dokumenty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть документы"
           }
         },
         "tr" : {
@@ -11453,6 +12365,12 @@
             "value" : "Inne"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Другое"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11510,6 +12428,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tworzenie paczki"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сборка пакета"
           }
         },
         "tr" : {
@@ -11581,6 +12505,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Przewodnik po pliku parowania"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Как получить файл сопряжения"
           }
         },
         "tr" : {
@@ -11719,6 +12649,12 @@
             "value" : "Pozwolenia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Разрешения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -11788,6 +12724,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Platforma"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Платформа"
           }
         },
         "tr" : {
@@ -11951,6 +12893,12 @@
             "value" : "Przejdź do ustawień i zaimportuj poprawny certyfikat"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открой настройки и загрузи действующий сертификат"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12008,6 +12956,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Po podpisaniu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "После подписи"
           }
         },
         "tr" : {
@@ -12134,6 +13088,12 @@
             "value" : "Weryfikacja PPQ"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "PPQCheck"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12206,6 +13166,12 @@
             "value" : "Poprzednie wersje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Предыдущие версии"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12257,6 +13223,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pro Motion"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ProMotion"
           }
         },
         "tr" : {
@@ -12316,6 +13288,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Przystąp"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Продолжить"
           }
         },
         "tr" : {
@@ -12396,6 +13374,12 @@
             "value" : "Właściwości"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Свойства"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12465,6 +13449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ochrona"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Защита"
           }
         },
         "tr" : {
@@ -12538,6 +13528,12 @@
             "value" : "Provisionuj wszystkie urządzenia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль на все устройства"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12607,6 +13603,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Provisionowane urządzenia"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Устройства в профиле"
           }
         },
         "tr" : {
@@ -12680,6 +13682,12 @@
             "value" : "Podpisz ponownie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переподписать"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12737,6 +13745,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Gotowe"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Готово"
           }
         },
         "tr" : {
@@ -12810,6 +13824,12 @@
             "value" : "Usuwanie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удаление"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -12879,6 +13899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usuń irytujące alerty jak ten po uzyskaniu dostępu do bety!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Получи доступ к бете — и такие окна больше не появятся!"
           }
         },
         "tr" : {
@@ -13029,6 +14055,12 @@
             "value" : "Usuń ten alert"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убрать это окно"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13177,6 +14209,12 @@
             "value" : "Usuń placeholder Watch"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Убрать заглушку для Watch"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13228,6 +14266,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Usunięcie pliku provisioning spowoduje, że plik mobileprovision nie będzie osadzony w aplikacji podczas podpisywania, co zapobiegnie jakiemukolwiek wykryciu."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Профиль не будет встроен в приложение при подписи — так его сложнее обнаружить."
           }
         },
         "tr" : {
@@ -13287,6 +14331,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zastąp Substrate przez ElleKit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Заменить Substrate на ElleKit"
           }
         },
         "tr" : {
@@ -13437,6 +14487,12 @@
             "value" : "Repozytoria"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Репозитории"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13494,6 +14550,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Repozytorium jest obecnie dodane."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Репозиторий уже добавлен."
           }
         },
         "tr" : {
@@ -13644,6 +14706,12 @@
             "value" : "Resetuj wszystko"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить всё"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13701,6 +14769,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resetuj certyfikaty"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить сертификаты"
           }
         },
         "tr" : {
@@ -13762,6 +14836,12 @@
             "value" : "Resetuj zaimportowane aplikacje"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить загруженные приложения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13819,6 +14899,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resetuj pamięć podręczną sieci"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить сетевой кэш"
           }
         },
         "tr" : {
@@ -13880,6 +14966,12 @@
             "value" : "Resetuj ustawienia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить настройки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -13937,6 +15029,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Resetuj podpisane aplikacje"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить подписанные приложения"
           }
         },
         "tr" : {
@@ -13998,6 +15096,12 @@
             "value" : "Resetuj źródła"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбросить источники"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14057,6 +15161,12 @@
             "value" : "Zresetuj źródła aplikacji, certyfikaty, aplikacje i ogólną zawartość."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сбрасывает источники, сертификаты, приложения и прочее содержимое."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14114,6 +15224,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zresetuj pamięć podręczną"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Очистить рабочий кэш"
           }
         },
         "tr" : {
@@ -14187,6 +15303,12 @@
             "value" : "Restartuj Heartbeat"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Перезапустить Heartbeat"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14258,6 +15380,12 @@
             "value" : "Wymagany restart"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нужен перезапуск"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14303,6 +15431,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odwołany"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отозван"
           }
         },
         "tr" : {
@@ -14435,6 +15569,12 @@
             "value" : "Zrzuty ekranu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скриншоты"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14507,6 +15647,12 @@
             "value" : "Zobacz wszystkie aplikacje ze swoich źródeł"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Все приложения из твоих источников"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14576,6 +15722,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wygląda na to, że masz swój plik parowania!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Похоже, файл сопряжения у тебя на руках!"
           }
         },
         "tr" : {
@@ -14650,6 +15802,12 @@
             "value" : "Wybierz alternatywną ikonę"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать другую иконку"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14720,6 +15878,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wybierz plik uprawnień"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выбрать файл прав"
           }
         },
         "tr" : {
@@ -14793,6 +15957,12 @@
             "value" : "Częściowo lokalnie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Частично локально"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14850,6 +16020,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wysyłanie manifestu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправка манифеста"
           }
         },
         "tr" : {
@@ -14911,6 +16087,12 @@
             "value" : "Wysyłanie ładunku"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отправка данных"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -14970,6 +16152,12 @@
             "value" : "Serwer"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15027,6 +16215,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Serwer (zalecane):\nUżywa lokalnie hostowanego serwera i itms-services:// do instalowania aplikacji.\n\nIDevice (zaawansowane):\nUżywa VPN i pliku parowania. Zapisuje do AFC i ręcznie wywołuje installd, monitorując postęp instalacji przez callback.\nZaleta: Jest bardzo niezawodny, nie wymaga certyfikatów SSL ani zewnętrznego serwera. Działa podobnie do komputera."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер (рекомендуется):\nЛокальный сервер и itms-services:// для установки приложений.\n\nIDevice (для опытных):\nVPN и файл сопряжения. Пишет в AFC и сам вызывает installd, отслеживая ход установки через обратный вызов.\nПлюс: очень надёжно, не нужны SSL-сертификаты и внешний сервер — работает почти как компьютер."
           }
         },
         "tr" : {
@@ -15100,6 +16294,12 @@
             "value" : "Serwer i SSL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сервер и SSL"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15157,6 +16357,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Typ serwera"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип сервера"
           }
         },
         "tr" : {
@@ -15243,6 +16449,12 @@
             "value" : "Ustawienia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Настройки"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15313,6 +16525,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Pokaż arkusz podczas eksportu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Показывать окно при экспорте"
           }
         },
         "tr" : {
@@ -15386,6 +16604,12 @@
             "value" : "Pokaż swoje wsparcie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержать проект"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15455,6 +16679,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Okaż wsparcie poprzez darowiznę! Jeśli nie możesz wesprzeć finansowo, podziel się informacją z innymi!"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддержи проект деньгами! Не можешь — просто расскажи о нём другим."
           }
         },
         "tr" : {
@@ -15528,6 +16758,12 @@
             "value" : "Podpisz"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подписать"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15597,6 +16833,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podpisane"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подписанные"
           }
         },
         "tr" : {
@@ -15674,6 +16916,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Podpisywanie"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Подпись"
           }
         },
         "tr" : {
@@ -15812,6 +17060,12 @@
             "value" : "Typ podpisu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тип подписи"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15859,6 +17113,12 @@
             "value" : "Rozmiar"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Размер"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -15904,6 +17164,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Źródło"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Источник"
           }
         },
         "tr" : {
@@ -15975,6 +17241,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Adres URL repozytorium źródłowego"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ссылка на источник"
           }
         },
         "tr" : {
@@ -16061,6 +17333,12 @@
             "value" : "Źródła"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Источники"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16106,6 +17384,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Źródła skopiowane do schowka"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Источники скопированы"
           }
         },
         "tr" : {
@@ -16165,6 +17449,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Prędkość"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скорость"
           }
         },
         "tr" : {
@@ -16327,6 +17617,12 @@
             "value" : "Certyfikaty SSL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "SSL-сертификаты"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16396,6 +17692,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Standardowy"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обычный"
           }
         },
         "tr" : {
@@ -16475,6 +17777,12 @@
             "value" : "Rozpocznij podpisywanie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Начать подпись"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16546,6 +17854,12 @@
             "value" : "Wygląd komórki sklepu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вид строк в каталоге"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16615,6 +17929,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ciąg znaków"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Строка"
           }
         },
         "tr" : {
@@ -16777,6 +18097,12 @@
             "value" : "Obsługuje importowanie z KravaSign/MapleSign i ESign"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддерживается загрузка из KravaSign/MapleSign и ESign."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16822,6 +18148,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Wróć"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вернуть обратно"
           }
         },
         "tr" : {
@@ -16895,6 +18227,12 @@
             "value" : "Identyfikatory zespołu"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Идентификаторы команды"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -16964,6 +18302,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Nazwa zespołu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Название команды"
           }
         },
         "tr" : {
@@ -17037,6 +18381,12 @@
             "value" : "Monitor pracy aplikacji działa w tle. Zostanie uruchomiony ponownie po ponownym otwarciu lub wymuszeniu. Jeśli poniższy status pulsuje, wszystko działa poprawnie."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heartbeat работает в фоне и перезапускается при открытии приложения. Если индикатор ниже пульсирует — всё в порядке."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17096,6 +18446,12 @@
             "value" : "Jedynymi obsługiwanymi repozytoriami są repozytoria AltStore."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Поддерживаются только репозитории формата AltStore."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17153,6 +18509,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Motyw"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Оформление"
           }
         },
         "tr" : {
@@ -17226,6 +18588,12 @@
             "value" : "Te zmiany wymagają ponownego uruchomienia aplikacji"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Изменения вступят в силу после перезапуска приложения"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17284,6 +18652,12 @@
             "value" : "Tej czynności nie można cofnąć. Czy chcesz kontynuować?"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Действие необратимо. Продолжить?"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17329,6 +18703,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Umożliwia ustawienie reguł automatycznej zamiany identyfikatora pakietu/wyświetlanej nazwy podczas podpisywania aplikacji."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Позволяет задать правила, по которым Bundle ID и имя приложения заменяются при подписи автоматически."
           }
         },
         "tr" : {
@@ -17390,6 +18770,12 @@
             "value" : "Włącza liquid glass dla tej aplikacji. Wymaga ponownego uruchomienia, aby zmiany zostały zastosowane."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Включает Liquid Glass для этого приложения. Нужен перезапуск."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17447,6 +18833,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Ta opcja wymusza konwersję aplikacji na nowy wygląd liquid glass wprowadzony w iOS 26. Może nie działać ze wszystkimi aplikacjami z powodu różnych frameworków."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Переводит приложения на новый вид Liquid Glass из iOS 26. Работает не со всеми — у них разные фреймворки."
           }
         },
         "tr" : {
@@ -17508,6 +18900,12 @@
             "value" : "Spowoduje to usunięcie zaimportowanej aplikacji po jej podpisaniu, co pozwoli zwolnić miejsce."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Загруженное приложение удалится после подписи, чтобы не занимать место."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17553,6 +18951,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Barwione Ikony"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Тонированные иконки"
           }
         },
         "tr" : {
@@ -17626,6 +19030,12 @@
             "value" : "Włączenie arkusza spowoduje wyświetlenie arkusza udostępniania po wyeksportowaniu do plików."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "После экспорта в файлы будет показано окно «Поделиться»."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17697,6 +19107,12 @@
             "value" : "Tunel i parowanie"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Туннель и сопряжение"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -17761,6 +19177,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Tweaks"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Твики"
           }
         },
         "tr" : {
@@ -17886,6 +19308,12 @@
             "state" : "translated",
             "value" : "Aktualizuj"
           }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновить"
+          }
         }
       }
     },
@@ -17902,6 +19330,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Dostępna aktualizacja"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Есть обновление"
           }
         }
       }
@@ -17957,6 +19391,12 @@
             "value" : "Aktualizuj certyfikaty SSL"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновить SSL-сертификаты"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18002,6 +19442,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Zaktualizowano"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Обновлено"
           }
         },
         "tr" : {
@@ -18055,6 +19501,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "URL"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ссылка"
           }
         },
         "tr" : {
@@ -18114,6 +19566,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Źródłowa wartość"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Значение"
           }
         },
         "tr" : {
@@ -18199,6 +19657,12 @@
             "value" : "Wersja"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18247,6 +19711,12 @@
             "value" : "Wersja %@"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Версия %@"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18292,6 +19762,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historia wersji"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "История версий"
           }
         },
         "tr" : {
@@ -18366,6 +19842,12 @@
             "value" : "Zobacz uprawnienia"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Посмотреть права"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18436,6 +19918,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Odwiedź Patreon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть Patreon"
           }
         },
         "tr" : {
@@ -18510,6 +19998,12 @@
             "value" : "Odwiedź stronę"
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Открыть сайт"
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18555,6 +20049,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Co nowego"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Что нового"
           }
         },
         "tr" : {
@@ -18622,6 +20122,12 @@
             "value" : "Nie można zaktualizować „%@” przy jego użyciu. Użyj innego narzędzia do aktualizacji."
           }
         },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "«%@» нельзя обновить самим собой — воспользуйся другим инструментом."
+          }
+        },
         "tr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -18679,6 +20185,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Twój plik parowania jest nieprawidłowy i niekompatybilny z urządzeniem. Zaimportuj poprawny plik."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Файл сопряжения не подходит этому устройству — загрузи правильный файл."
           }
         },
         "tr" : {

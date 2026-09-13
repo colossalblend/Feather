@@ -30,7 +30,7 @@ public class NBFetchService {
 
 	/// User-Agent запросов к каталогам: по нему на сервере видно,
 	/// что источник тянет именно наша сборка Feather.
-	public static var userAgent: String = {
+	public static let userAgent: String = {
 		let version = (Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String) ?? "1.0"
 		return "Feather-BAB/\(version)"
 	}()

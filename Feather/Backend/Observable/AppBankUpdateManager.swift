@@ -29,6 +29,13 @@ struct AppBankUpdate: Equatable {
 	}
 }
 
+/// Чем закончилась проверка обновления — для ручной кнопки в настройках.
+enum AppBankUpdateOutcome {
+	case updateAvailable    // окно показано
+	case upToDate           // стоит последняя сборка
+	case unavailable        // нет адреса или сеть подвела
+}
+
 @MainActor
 final class AppBankUpdateManager: ObservableObject {
 	static let shared = AppBankUpdateManager()
@@ -58,8 +65,10 @@ final class AppBankUpdateManager: ObservableObject {
 		(Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String) ?? ""
 	}
 
-	func check(presenting: Bool = true) async {
-		guard !isChecking, let endpoint = _endpoint else { return }
+	@discardableResult
+	func check(presenting: Bool = true, manual: Bool = false) async -> AppBankUpdateOutcome {
+		guard let endpoint = _endpoint else { return .unavailable }
+		guard !isChecking else { return .unavailable }
 
 		isChecking = true
 		defer { isChecking = false }
@@ -81,7 +90,12 @@ final class AppBankUpdateManager: ObservableObject {
 			build != _currentBuild,
 			let install = (json["install"] as? String).flatMap(URL.init(string:))
 		else {
-			return
+			// Тело разобрали, но сборка совпала с нашей — значит всё свежее.
+			if let data = try? await _fetchBuild(endpoint), data == _currentBuild {
+				available = nil
+				return .upToDate
+			}
+			return .unavailable
 		}
 
 		let update = AppBankUpdate(
@@ -94,15 +108,29 @@ final class AppBankUpdateManager: ObservableObject {
 
 		available = update
 
-		guard presenting, _shownBuild != build else { return }
-		_shownBuild = build
-		isPresented = true
+		// Ручная проверка показывает окно всегда; авто — раз на сборку.
+		if presenting, manual || _shownBuild != build {
+			_shownBuild = build
+			isPresented = true
+		}
+		return .updateAvailable
 	}
 
 	private func _request(_ url: URL) -> URLRequest {
 		var request = URLRequest(url: url)
 		request.setValue(NBFetchService.userAgent, forHTTPHeaderField: "User-Agent")
 		return request
+	}
+
+	/// Отдельный лёгкий запрос: нужен только чтобы отличить «сборка та же»
+	/// (upToDate) от настоящей ошибки сети, когда основной разбор не прошёл.
+	private func _fetchBuild(_ endpoint: URL) async -> String? {
+		guard
+			let (data, response) = try? await URLSession.shared.data(for: _request(endpoint)),
+			(response as? HTTPURLResponse)?.statusCode == 200,
+			let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any]
+		else { return nil }
+		return json["build"] as? String
 	}
 
 	func install() {

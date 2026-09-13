@@ -20263,6 +20263,40 @@
           }
         }
       }
+    },
+    "You're on the latest version." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You're on the latest version."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "У тебя последняя версия."
+          }
+        }
+      }
+    },
+    "Couldn't check for updates. Try again later." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Couldn't check for updates. Try again later."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось проверить обновления. Попробуй позже."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

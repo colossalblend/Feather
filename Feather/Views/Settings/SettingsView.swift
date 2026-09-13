@@ -15,6 +15,7 @@ import IDeviceSwift
 struct SettingsView: View {
 	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
 	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
+	@StateObject private var _updates = AppBankUpdateManager.shared
 	
 	// MARK: Fetch
 	@FetchRequest(
@@ -47,6 +48,8 @@ struct SettingsView: View {
                 
 				_feedback()
                 
+				_updatesSection()
+
 				Section {
 					NavigationLink(destination: AppearanceView()) {
 						Label(.localized("Appearance"), systemImage: "paintbrush")
@@ -103,6 +106,41 @@ struct SettingsView: View {
 
 // MARK: - View extension
 extension SettingsView {
+	@ViewBuilder
+	private func _updatesSection() -> some View {
+		Section {
+			Button {
+				Task { await _checkForUpdates() }
+			} label: {
+				HStack {
+					Label(.localized("Check for Updates"), systemImage: "arrow.triangle.2.circlepath")
+					if _updates.isChecking {
+						Spacer()
+						ProgressView()
+					}
+				}
+			}
+			.disabled(_updates.isChecking)
+		} footer: {
+			Text(verbatim: .localized("Version %@", arguments: Bundle.main.version))
+		}
+	}
+
+	private func _checkForUpdates() async {
+		switch await _updates.check(presenting: true, manual: true) {
+			case .updateAvailable:
+				break
+			case .upToDate:
+				UIAlertController.showAlertWithOk(
+					title: .localized("Check for Updates"),
+					message: .localized("You're on the latest version."))
+			case .unavailable:
+				UIAlertController.showAlertWithOk(
+					title: .localized("Check for Updates"),
+					message: .localized("Couldn't check for updates. Try again later."))
+		}
+	}
+
 	@ViewBuilder
 	private func _feedback() -> some View {
 		Section {

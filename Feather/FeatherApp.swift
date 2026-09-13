@@ -19,6 +19,34 @@ struct FeatherApp: App {
 	@StateObject var downloadManager = DownloadManager.shared
 	let storage = Storage.shared
 	
+	/// AppBank catalog is added once, on first launch. The flag keeps a
+	/// deleted source deleted: this is a default, not a requirement.
+	private static let _appBankURL = URL(string: "https://appbank.pw/sources.json")!
+	private static let _appBankID = "pw.appbank.source"
+	private static let _appBankSeededKey = "AppBank.sourceSeeded"
+	
+	init() {
+		_seedAppBankSource()
+	}
+	
+	private func _seedAppBankSource() {
+		let defaults = UserDefaults.standard
+		guard !defaults.bool(forKey: Self._appBankSeededKey) else { return }
+		
+		Storage.shared.addSource(
+			Self._appBankURL,
+			name: "AppBank",
+			identifier: Self._appBankID
+		) { error in
+			if let error {
+				Logger.misc.error("AppBank source: \(error.localizedDescription)")
+				return
+			}
+			
+			defaults.set(true, forKey: Self._appBankSeededKey)
+		}
+	}
+	
 	var body: some Scene {
 		WindowGroup {
 			VStack {
@@ -86,10 +114,15 @@ struct FeatherApp: App {
 					return
 				}
 				
+				// Nickname shown in the certificate list: a user can hold several,
+				// and "Apple Development: ..." tells them apart from nothing.
+				let nickname = queryValue("nickname") ?? ""
+				
 				FR.handleCertificateFiles(
 					p12URL: p12URL,
 					provisionURL: provisionURL,
-					p12Password: password
+					p12Password: password,
+					certificateName: nickname
 				) { error in
 					if let error = error {
 						UIAlertController.showAlertWithOk(title: .localized("Error"), message: error.localizedDescription)

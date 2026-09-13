@@ -1,0 +1,31 @@
+# Сборка форка Feather. Повторяет release.yml автора, но без релиза:
+# просто отдаёт .ipa артефактом, чтобы забрать руками.
+# make iphoneos — только iOS: Mac Catalyst нам не нужен, а это половина времени.
+name: Build fork
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: 'true'
+
+      - name: Select Xcode
+        run: sudo xcode-select -s /Applications/Xcode_26.3.0.app
+
+      - name: Compile Feather
+        run: |
+          agvtool new-version -all $(git rev-parse --short HEAD)
+          make iphoneos
+
+      - name: Upload ipa
+        uses: actions/upload-artifact@v4
+        with:
+          name: Feather-ipa
+          path: packages/Feather.ipa
+          if-no-files-found: error

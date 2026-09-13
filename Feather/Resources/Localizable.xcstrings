@@ -20148,6 +20148,23 @@
         }
       }
     },
+    "Your certificates, sources and apps will be kept." : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Your certificates, sources and apps will be kept."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сертификаты, источники и приложения останутся на месте."
+          }
+        }
+      }
+    },
     "Your pairing file is invalid and is incompatible with your device, please import a valid pairing file." : {
       "extractionState" : "manual",
       "localizations" : {

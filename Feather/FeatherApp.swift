@@ -17,6 +17,7 @@ struct FeatherApp: App {
 	let heartbeat = HeartbeatManager.shared
 	
 	@StateObject var downloadManager = DownloadManager.shared
+	@StateObject var appBankUpdates = AppBankUpdateManager.shared
 	let storage = Storage.shared
 	
 	/// AppBank catalog is added once, on first launch. The flag keeps a
@@ -56,6 +57,17 @@ struct FeatherApp: App {
 					.environment(\.managedObjectContext, storage.context)
 					.onOpenURL(perform: _handleURL)
 					.transition(.move(edge: .top).combined(with: .opacity))
+					// Своя сборка обновляется не из каталога, а по своему API:
+					// ставить приложение поверх себя через локальный сервер
+					// Feather не даёт, а itms-services — обычный путь установки.
+					.task {
+						await appBankUpdates.check()
+					}
+					.sheet(isPresented: $appBankUpdates.isPresented) {
+						if let update = appBankUpdates.available {
+							AppBankUpdateView(update: update)
+						}
+					}
 			}
 			.animation(.smooth, value: downloadManager.manualDownloads.description)
 			.onReceive(NotificationCenter.default.publisher(for: .heartbeatInvalidHost)) { _ in

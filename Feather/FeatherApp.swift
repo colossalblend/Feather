@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import NimbleJSON
 import Nuke
 import IDeviceSwift
 import OSLog
@@ -207,6 +208,7 @@ class AppDelegate: NSObject, UIApplicationDelegate {
 			let dataLoader: DataLoader = {
 				let config = URLSessionConfiguration.default
 				config.urlCache = nil
+				config.httpAdditionalHeaders = ["User-Agent": NBFetchService.userAgent]
 				return DataLoader(configuration: config)
 			}()
 			let dataCache = try? DataCache(name: "thewonderofyou.Feather.datacache") // disk cache

@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import NimbleJSON
 import Combine
 import UIKit.UIImpactFeedbackGenerator
 import BackgroundTasks
@@ -71,6 +72,8 @@ class DownloadManager: NSObject, ObservableObject {
 	override init() {
 		super.init()
 		let configuration = URLSessionConfiguration.default
+		// Та же подпись, что у запросов к каталогам
+		configuration.httpAdditionalHeaders = ["User-Agent": NBFetchService.userAgent]
 		_session = URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
 	}
 	

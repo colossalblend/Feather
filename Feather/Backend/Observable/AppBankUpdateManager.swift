@@ -14,6 +14,7 @@
 //
 
 import Foundation
+import NimbleJSON
 import SwiftUI
 
 struct AppBankUpdate: Equatable {
@@ -70,7 +71,7 @@ final class AppBankUpdateManager: ObservableObject {
 
 		guard
 			let url = components?.url,
-			let (data, response) = try? await URLSession.shared.data(from: url),
+			let (data, response) = try? await URLSession.shared.data(for: _request(url)),
 			let http = response as? HTTPURLResponse,
 			http.statusCode == 200,
 			let json = try? JSONSerialization.jsonObject(with: data) as? [String: Any],
@@ -96,6 +97,12 @@ final class AppBankUpdateManager: ObservableObject {
 		guard presenting, _shownBuild != build else { return }
 		_shownBuild = build
 		isPresented = true
+	}
+
+	private func _request(_ url: URL) -> URLRequest {
+		var request = URLRequest(url: url)
+		request.setValue(NBFetchService.userAgent, forHTTPHeaderField: "User-Agent")
+		return request
 	}
 
 	func install() {

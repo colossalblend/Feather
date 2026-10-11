@@ -78,13 +78,20 @@ class ServerInstaller: Identifiable, ObservableObject {
             return
         }
         if _serverMethod == 1 {
-            let url = InstallationLinks.manifestURL(identifier: app.identifier ?? "", name: app.name ?? "", version: app.version ?? "1", payload: payloadEndpoint)
-            let (data, response) = try await URLSession.shared.data(for: URLRequest(url: url, timeoutInterval: 10))
-            guard (response as? HTTPURLResponse)?.statusCode == 200,
-                  InstallationLinks.validatesManifest(data, identifier: app.identifier ?? "", payload: payloadEndpoint) else {
+            // Existing public services used by RyukSign. No AppBank server,
+            // uploaded IPA, stored manifest or certificate is involved.
+            manifestUrl = nil
+            for endpoint in ["https://ryuksign-install.ryuksign.workers.dev/genPlist", "https://api.palera.in/genPlist"] {
+                let url = InstallationLinks.manifestURL(identifier: app.identifier ?? "", name: app.name ?? "", version: app.version ?? "1", payload: payloadEndpoint, endpoint: endpoint)
+                guard let (data, response) = try? await URLSession.shared.data(for: URLRequest(url: url, timeoutInterval: 10)),
+                      (response as? HTTPURLResponse)?.statusCode == 200,
+                      InstallationLinks.validatesManifest(data, identifier: app.identifier ?? "", payload: payloadEndpoint) else { continue }
+                manifestUrl = url
+                break
+            }
+            guard manifestUrl != nil else {
                 throw installationError("Could not load the installation manifest. Check your internet connection and try again.")
             }
-            manifestUrl = url
         }
     }
 

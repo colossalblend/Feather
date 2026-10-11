@@ -2,8 +2,9 @@
 import Foundation
 
 enum InstallationLinks {
-    static func manifestURL(identifier: String, name: String, version: String, payload: URL) -> URL {
-        var components = URLComponents(string: "https://api.palera.in/genPlist")!
+    static func manifestURL(identifier: String, name: String, version: String, payload: URL,
+                            endpoint: String = "https://api.palera.in/genPlist") -> URL {
+        var components = URLComponents(string: endpoint)!
         components.queryItems = [
             URLQueryItem(name: "bundleid", value: identifier),
             URLQueryItem(name: "name", value: name),

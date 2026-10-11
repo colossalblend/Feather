@@ -13,7 +13,7 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
-	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
+	@AppStorage("feather.selectedCertUUID") private var _storedSelectedCertUUID: String = ""
 	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
 	@StateObject private var _updates = AppBankUpdateManager.shared
 	
@@ -25,13 +25,8 @@ struct SettingsView: View {
 	) private var _certificates: FetchedResults<CertificatePair>
 	
 	private var selectedCertificate: CertificatePair? {
-		guard
-			_storedSelectedCert >= 0,
-			_storedSelectedCert < _certificates.count
-		else {
-			return nil
-		}
-		return _certificates[_storedSelectedCert]
+		_ = _storedSelectedCertUUID
+		return Storage.shared.selectedCertificate()
 	}
 
     
@@ -93,6 +88,9 @@ struct SettingsView: View {
 				_directories()
                 
 				Section {
+					NavigationLink(destination: AppBankBackupView()) {
+						Label("Резервная копия", systemImage: "externaldrive")
+					}
 					NavigationLink(destination: ResetView()) {
 						Label(.localized("Reset"), systemImage: "trash")
 					}

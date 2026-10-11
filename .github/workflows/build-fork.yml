@@ -23,6 +23,11 @@ jobs:
           swiftc Feather/Backend/Server/InstallationLinks.swift Tests/InstallationLinksTests.swift -o /tmp/feather-install-tests
           /tmp/feather-install-tests
 
+      - name: Test self-update release validation
+        run: |
+          swiftc Feather/Backend/Observable/AppBankRelease.swift Tests/AppBankReleaseTests.swift -o /tmp/feather-release-tests
+          /tmp/feather-release-tests
+
       - name: Test repository download URLs
         run: swift test --package-path AltSourceKit
 

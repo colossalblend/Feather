@@ -39,7 +39,8 @@ struct SigningView: View {
 	
 	init(app: AppInfoPresentable) {
 		self.app = app
-		let storedCert = UserDefaults.standard.integer(forKey: "feather.selectedCert")
+		let selectedUUID = Storage.shared.selectedCertificate()?.uuid
+		let storedCert = Storage.shared.getAllCertificates().firstIndex { $0.uuid == selectedUUID } ?? -1
 		__temporaryCertificate = State(initialValue: storedCert)
 	}
 		

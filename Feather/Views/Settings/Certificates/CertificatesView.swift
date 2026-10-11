@@ -11,6 +11,7 @@ import NimbleViews
 // MARK: - View
 struct CertificatesView: View {
 	@AppStorage("feather.selectedCert") private var _storedSelectedCert: Int = 0
+	@AppStorage("feather.selectedCertUUID") private var _storedSelectedCertUUID: String = ""
 	
 	@State private var _isAddingPresenting = false
 	@State private var _isRenamingPresenting = false
@@ -43,6 +44,7 @@ struct CertificatesView: View {
 			}
 		}
 		.navigationTitle(.localized("Certificates"))
+		.onAppear { _ = Storage.shared.selectedCertificate() }
 		.overlay {
 			if _certificates.isEmpty {
 				if #available(iOS 17, *) {
@@ -103,6 +105,7 @@ extension CertificatesView {
 		
 		Button {
 			_selectedCertBinding.wrappedValue = index
+			if _bindingSelectedCert == nil { Storage.shared.selectCertificate(cert) }
 		} label: {
 			CertificatesCellView(
 				cert: cert
@@ -115,7 +118,7 @@ extension CertificatesView {
 			.overlay(
 				RoundedRectangle(cornerRadius: cornerRadius)
 					.strokeBorder(
-						_selectedCertBinding.wrappedValue == index ? Color.accentColor : Color.clear,
+						(_bindingSelectedCert == nil ? Storage.shared.selectedCertificate()?.uuid == cert.uuid : _selectedCertBinding.wrappedValue == index) ? Color.accentColor : Color.clear,
 						lineWidth: 2
 					)
 			)

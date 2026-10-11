@@ -1,4 +1,4 @@
-# Feather AppBank 2.9.1
+# Feather AppBank 2.9.2
 
 Preserves the AppBank catalog, certificate import names, Russian translation and AppBank updater.
 
@@ -25,3 +25,11 @@ Semi-local uses the same public manifest services as RyukSign. IPAs remain on-de
 ## Validation
 
 GitHub Actions runs 14 regression assertions and compiles the iOS application on macOS. Device tests on Wi-Fi and mobile data are still required: compilation does not verify installd, carrier DNS, VPN behaviour or certificate validity.
+
+## 2.9.2 self updates
+
+Uses a shared HTTPS release endpoint (`feather_update.php?mode=local`) and a SHA-256-verified source IPA. The update is signed on-device with the currently selected certificate; it does not upload certificates or IPAs. Uses a dedicated signing path without user tweak/name/version/PPQ modifications and preserves the installed bundle identifier. Prepared files are reused only for the same release hash and certificate fingerprint. OCSP, profile expiry and signing results are checked before installation. The local installation server is retained outside the sheet; pairing-based installations use the existing installation proxy. The selected local/full-local setting is preserved. A 20-second fallback applies only before iOS has requested the manifest; no accepted installation is restarted.
+
+Certificate selection is stored by UUID with migration from the legacy sorted-list index. Deleted selections do not silently select another certificate. Settings and source URLs can be exported/restored from Settings; each update also saves the most recent backup to Documents/AppBank-Backup.plist. Backups exclude certificate keys and app files. Restore merges sources and validates the entire input before mutation. Referenced tweak/entitlements files are not restored.
+
+Legacy 2.9.0/2.9.1 clients need one last server-signed bootstrap update. Subsequent updates from 2.9.2 use local signing. Actual self-installation still requires an iPhone test; compilation does not verify iOS lifecycle or certificate trust.

@@ -13,6 +13,8 @@ import SwiftUI
 struct AppBankUpdateView: View {
 	@Environment(\.dismiss) private var dismiss
 	@StateObject private var manager = AppBankUpdateManager.shared
+	@State private var _contentHeight: CGFloat = 430
+	@State private var _footerHeight: CGFloat = 150
 
 	private let _update: AppBankUpdate
 
@@ -21,17 +23,42 @@ struct AppBankUpdateView: View {
 	}
 
 	var body: some View {
-		VStack(spacing: 0) {
-			_header
-			_notes
-			Spacer(minLength: 0)
-			_buttons
+		ScrollView {
+			VStack(spacing: 20) {
+				_header
+				_notes
+			}
+			.frame(maxWidth: .infinity)
+			.padding(.horizontal, 22)
+			.padding(.top, 28)
+			.padding(.bottom, 20)
+			.background {
+				GeometryReader { geometry in
+					Color.clear.preference(key: _UpdateContentHeight.self, value: geometry.size.height)
+				}
+			}
 		}
-		.padding(.horizontal, 22)
-		.padding(.top, 34)
-		.padding(.bottom, 20)
-		.presentationDetents([.height(430)])
-		.presentationDragIndicator(.visible)
+		.safeAreaInset(edge: .bottom, spacing: 0) {
+			_buttons
+				.padding(.horizontal, 22)
+				.padding(.top, 14)
+				.padding(.bottom, 12)
+				.background(.regularMaterial)
+				.background {
+					GeometryReader { geometry in
+						Color.clear.preference(key: _UpdateFooterHeight.self, value: geometry.size.height)
+					}
+				}
+		}
+		.onPreferenceChange(_UpdateContentHeight.self) { height in
+			if height > 0 { _contentHeight = height }
+		}
+		.onPreferenceChange(_UpdateFooterHeight.self) { height in
+			if height > 0 { _footerHeight = height }
+		}
+		.presentationDetents([.height(_contentHeight + _footerHeight)])
+		.presentationDragIndicator(.hidden)
+		.interactiveDismissDisabled(manager.isWorking)
 		.modifier(_SheetCorners())
 	}
 
@@ -47,13 +74,16 @@ struct AppBankUpdateView: View {
 
 			Text(verbatim: .localized("Update Available"))
 				.font(.title2).bold()
+				.multilineTextAlignment(.center)
+				.fixedSize(horizontal: false, vertical: true)
 
 			Text(verbatim: _versionLine)
 				.font(.subheadline)
 				.foregroundStyle(.secondary)
+				.multilineTextAlignment(.center)
+				.fixedSize(horizontal: false, vertical: true)
 		}
 		.frame(maxWidth: .infinity)
-		.padding(.bottom, 22)
 	}
 
 	private var _versionLine: String {
@@ -90,25 +120,48 @@ struct AppBankUpdateView: View {
 				.font(.caption)
 				.foregroundStyle(.secondary)
 				.multilineTextAlignment(.center)
+				.fixedSize(horizontal: false, vertical: true)
+				.frame(maxWidth: .infinity)
 				.padding(.bottom, 2)
 
+			if let stage = manager.stage {
+				Text(stage).font(.footnote).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+			}
+			if let error = manager.errorMessage {
+				Text(error).font(.footnote).foregroundStyle(.red).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
+			}
 			Button {
 				manager.install()
-				dismiss()
 			} label: {
 				NBSheetButton(
-					title: .localized("Download Update"),
+					title: manager.isWorking ? (manager.stage ?? "Подготовка…") : (manager.hasPreparedUpdate ? "Повторить установку" : .localized("Download Update")),
 					systemImage: "arrow.down.circle",
 					style: .prominent
 				)
 			}
 
+			.disabled(manager.isWorking || manager.isInstalling)
 			Button {
 				dismiss()
 			} label: {
 				NBSheetButton(title: .localized("Close"))
 			}
+			.disabled(manager.isWorking)
 		}
+	}
+}
+
+private struct _UpdateContentHeight: PreferenceKey {
+	static let defaultValue: CGFloat = 0
+	static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+		value = max(value, nextValue())
+	}
+}
+
+private struct _UpdateFooterHeight: PreferenceKey {
+	static let defaultValue: CGFloat = 0
+	static func reduce(value: inout CGFloat, nextValue: () -> CGFloat) {
+		value = max(value, nextValue())
 	}
 }
 

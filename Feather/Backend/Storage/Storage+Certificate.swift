@@ -20,6 +20,8 @@ extension Storage {
 		isDefault: Bool = false,
 		completion: @escaping (Error?) -> Void
 	) {
+		// Migrate the old index before a new certificate changes the sort order.
+		_ = selectedCertificate()
 		let generator = UIImpactFeedbackGenerator(style: .light)
 		
 		let new = CertificatePair(context: context)

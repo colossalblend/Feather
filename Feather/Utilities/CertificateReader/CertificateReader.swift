@@ -29,7 +29,8 @@ class CertificateReader: NSObject {
 				return nil
 			}
 			
-			let xmlData = fileData.subdata(in: xmlRange.lowerBound..<fileData.endIndex)
+			guard let end = fileData.range(of: Data("</plist>".utf8), in: xmlRange.lowerBound..<fileData.endIndex) else { return nil }
+			let xmlData = fileData.subdata(in: xmlRange.lowerBound..<end.upperBound)
 			
 			let decoder = PropertyListDecoder()
 			let data = try decoder.decode(Certificate.self, from: xmlData)

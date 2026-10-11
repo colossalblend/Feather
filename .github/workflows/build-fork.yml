@@ -23,6 +23,9 @@ jobs:
           swiftc Feather/Backend/Server/InstallationLinks.swift Tests/InstallationLinksTests.swift -o /tmp/feather-install-tests
           /tmp/feather-install-tests
 
+      - name: Test repository download URLs
+        run: swift test --package-path AltSourceKit
+
       - name: Compile Feather
         run: |
           agvtool new-version -all $(git rev-parse --short HEAD)

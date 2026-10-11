@@ -37,6 +37,8 @@ targets:
     info:
       path: Info.plist
       properties:
+        CFBundleVersion: $(CURRENT_PROJECT_VERSION)
+        CFBundleShortVersionString: $(MARKETING_VERSION)
         CFBundleDisplayName: Feather Installer
         CFBundleURLTypes:
           - CFBundleURLSchemes: [appbank-feather-installer]

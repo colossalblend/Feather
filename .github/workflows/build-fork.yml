@@ -62,6 +62,7 @@ jobs:
 
       - name: Compile minimal Installer
         run: |
+          test -f deps/server.crt || make deps
           command -v xcodegen || brew install xcodegen
           swift FeatherInstaller/make-icon.swift FeatherInstaller/Assets.xcassets/AppIcon.appiconset/Installer.png
           cd FeatherInstaller

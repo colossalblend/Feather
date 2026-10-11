@@ -24,7 +24,7 @@ final class InstallerTransferServer {
   }
   server.post("ack", .constant(token)) { req -> HTTPStatus in
    guard let body = req.body.data,
-         let receipt = try? JSONDecoder().decode(InstallerReceipt.self, from: Data(buffer: body)),
+         let receipt = try? JSONDecoder().decode(InstallerReceipt.self, from: Data(body.readableBytesView)),
          receipt.build == expected.build, receipt.sha256 == expected.sha256,
          receipt.cleanup.scheme == "http", receipt.cleanup.host == "127.0.0.1",
          receipt.cleanup.port.map({ (1024...65535).contains($0) }) == true,

@@ -84,7 +84,7 @@ final class InstallerServer {
   let build = request.build, completed = self.completed
   receiver.post("complete", .constant(request.token)) { req -> HTTPStatus in
    guard let data = req.body.data,
-         let confirmation = try? JSONDecoder().decode([String: String].self, from: Data(buffer: data)),
+         let confirmation = try? JSONDecoder().decode([String: String].self, from: Data(data.readableBytesView)),
          confirmation["build"] == build else { return .badRequest }
    completed(); return .ok
   }

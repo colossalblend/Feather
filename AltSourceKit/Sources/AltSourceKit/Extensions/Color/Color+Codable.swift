@@ -41,7 +41,7 @@ extension Color: Codable {
 		
 		// had to use this shim
 		let (r, g, b, a) = {
-			if #available(iOS 17.0, *) {
+			if #available(iOS 17.0, macOS 14.0, *) {
 				
 				let resolved = resolve(in: EnvironmentValues())
 				
@@ -128,9 +128,12 @@ public extension Color {
 		#if canImport(UIKit)
 			typealias NativeColor = UIColor
 		#elseif canImport(AppKit)
-			typealias NativeColor = NSColor
+			guard let color = NSColor(self).usingColorSpace(.sRGB) else {
+				return (0, 0, 0, 0)
+			}
+			return (color.redComponent, color.greenComponent, color.blueComponent, color.alphaComponent)
 		#endif
-		
+		#if canImport(UIKit)
 		var r: CGFloat = 0
 		var g: CGFloat = 0
 		var b: CGFloat = 0
@@ -142,5 +145,6 @@ public extension Color {
 		}
 		
 		return (r, g, b, o)
+		#endif
 	}
 }

@@ -16,9 +16,10 @@ struct InstallPreviewView: View {
 
 	@AppStorage("Feather.useShareSheetForArchiving") private var _useShareSheet: Bool = false
 	@AppStorage("Feather.installationMethod") private var _installationMethod: Int = 0
-	@AppStorage("Feather.serverMethod") private var _serverMethod: Int = 0
 	@State private var _isWebviewPresenting = false
 	@State private var progressTask: Task<Void, Never>?
+	@State private var handoffTask: Task<Void, Never>?
+	@State private var isPreparingInstall = false
 	
 	var app: AppInfoPresentable
 	@StateObject var viewModel: InstallerStatusViewModel
@@ -59,14 +60,12 @@ struct InstallPreviewView: View {
 		.onReceive(viewModel.$status) { newStatus in
 			if _installationMethod == 0 {
 				if case .ready = newStatus {
-					if _serverMethod == 0 {
-						UIApplication.shared.open(URL(string: installer.iTunesLink)!)
-					} else if _serverMethod == 1 {
-						_isWebviewPresenting = true
-					}
+					_openInstallation()
 				}
 				
-				if case .sendingPayload = newStatus, _serverMethod == 1 {
+				if case .sendingPayload = newStatus {
+					handoffTask?.cancel()
+					handoffTask = nil
 					_isWebviewPresenting = false
 				}
 				
@@ -81,6 +80,8 @@ struct InstallPreviewView: View {
 				
 				switch newStatus {
 				case .completed, .broken(_):
+					handoffTask?.cancel()
+					handoffTask = nil
 					progressTask?.cancel()
 					progressTask = nil
 					#if !targetEnvironment(macCatalyst)
@@ -100,6 +101,8 @@ struct InstallPreviewView: View {
 		#endif
 		
 		.onDisappear {
+			handoffTask?.cancel()
+			handoffTask = nil
 			progressTask?.cancel()
 			progressTask = nil
 			
@@ -111,17 +114,36 @@ struct InstallPreviewView: View {
 	
 	@ViewBuilder
 	private func _status() -> some View {
-		Label(viewModel.statusLabel, systemImage: viewModel.statusImage)
+		VStack(alignment: .leading, spacing: 6) {
+			Label(isPreparingInstall ? String.localized("Checking installation") : viewModel.statusLabel, systemImage: viewModel.statusImage)
+			if case .broken(let error) = viewModel.status {
+				Text(error.localizedDescription).font(.caption).foregroundStyle(.secondary)
+			}
+		}
 			.padding()
 			.labelStyle(.titleAndIcon)
 			.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: .bottomLeading)
 			.animation(.smooth, value: viewModel.statusImage)
 	}
 	
+    private var _canRetry: Bool {
+        switch viewModel.status {
+        case .broken, .ready: return !isPreparingInstall
+        default: return false
+        }
+    }
+
 	@ViewBuilder
 	private func _button() -> some View {
 		ZStack {
-			if viewModel.isCompleted {
+			if _canRetry, installer.packageUrl != nil {
+				Button {
+					Task { await _prepareInstallation() }
+				} label: {
+					NBButton("Retry", systemImage: "arrow.clockwise", style: .text)
+				}
+				.padding()
+			} else if viewModel.isCompleted {
 				Button {
 					UIApplication.openApp(with: app.identifier ?? "")
 				} label: {
@@ -155,8 +177,8 @@ struct InstallPreviewView: View {
 					if await _installationMethod == 0 {
 						await MainActor.run {
 							installer.packageUrl = packageUrl
-							viewModel.status = .ready
 						}
+						await _prepareInstallation()
 						
 						if case .installing = await viewModel.status {
 							let task = await startInstallProgressPolling(
@@ -205,6 +227,61 @@ struct InstallPreviewView: View {
 		}
 	}
 	
+	@MainActor
+	private func _prepareInstallation() async {
+		guard !isPreparingInstall else { return }
+		isPreparingInstall = true
+		defer { isPreparingInstall = false }
+		viewModel.status = .none
+		do {
+			try await installer.prepare()
+			viewModel.status = .ready
+		} catch {
+			viewModel.status = .broken(error)
+		}
+	}
+
+	@MainActor
+	private func _openInstallation() {
+		handoffTask?.cancel()
+		let fullyLocal = installer.getServerMethod() == 0
+		let link = fullyLocal ? installer.iTunesLink : installer.iTunesLinkExternal
+		guard let url = URL(string: link) else { return }
+		// RyukSign: use the system scheme first, Safari only as a fallback.
+		UIApplication.shared.open(url) { opened in
+			Task { @MainActor in
+				if !opened {
+					if fullyLocal {
+						await _recoverInstallation()
+					} else {
+						_isWebviewPresenting = true
+					}
+				}
+			}
+		}
+		handoffTask = Task { @MainActor in
+			// Never restart an accepted install or an open confirmation prompt.
+			try? await Task.sleep(nanoseconds: 20_000_000_000)
+			guard !Task.isCancelled, fullyLocal, case .ready = viewModel.status,
+				UIApplication.shared.applicationState == .active else { return }
+			await _recoverInstallation()
+		}
+	}
+
+	@MainActor
+	private func _recoverInstallation() async {
+		guard !isPreparingInstall, case .ready = viewModel.status else { return }
+		isPreparingInstall = true
+		defer { isPreparingInstall = false }
+		do {
+			if try await installer.recoverToSemiLocal() {
+				_openInstallation()
+			}
+		} catch {
+			viewModel.status = .broken(error)
+		}
+	}
+
 	private func startInstallProgressPolling(
 		bundleID: String,
 		viewModel: InstallerStatusViewModel
@@ -214,7 +291,8 @@ struct InstallPreviewView: View {
 			var hasStarted = false
 
 			while !Task.isCancelled {
-				let rawProgress = await UIApplication.installProgress(for: bundleID) ?? 0.0
+				let observedProgress = await UIApplication.installProgress(for: bundleID)
+				let rawProgress = observedProgress ?? 0.0
 
 				if rawProgress > 0 {
 					hasStarted = true
@@ -230,7 +308,7 @@ struct InstallPreviewView: View {
 					viewModel.installProgress = progress
 				}
 
-				if hasStarted && rawProgress == 0 {
+				if hasStarted && observedProgress == 0 {
 					await MainActor.run {
 						viewModel.installProgress = 1.0
 						viewModel.status = .completed(.success(()))
@@ -238,7 +316,7 @@ struct InstallPreviewView: View {
 					break
 				}
 
-				try? await Task.sleep(nanoseconds: 1_000_000) // 1 ms
+				try? await Task.sleep(nanoseconds: 250_000_000)
 			}
 		}
 	}

@@ -18,6 +18,11 @@ jobs:
       - name: Select Xcode
         run: sudo xcode-select -s /Applications/Xcode_26.3.0.app
 
+      - name: Test installation links
+        run: |
+          swiftc Feather/Backend/Server/InstallationLinks.swift Tests/InstallationLinksTests.swift -o /tmp/feather-install-tests
+          /tmp/feather-install-tests
+
       - name: Compile Feather
         run: |
           agvtool new-version -all $(git rev-parse --short HEAD)

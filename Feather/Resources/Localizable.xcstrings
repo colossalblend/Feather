@@ -20297,6 +20297,56 @@
           }
         }
       }
+    },
+    "Checking installation" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Проверка установки"
+          }
+        }
+      }
+    },
+    "Waiting for installation" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ожидание начала установки"
+          }
+        }
+      }
+    },
+    "Local installation server is unavailable." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Локальный сервер установки недоступен."
+          }
+        }
+      }
+    },
+    "Local SSL certificates are missing." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отсутствуют SSL-сертификаты локального сервера."
+          }
+        }
+      }
+    },
+    "Could not load the installation manifest. Check your internet connection and try again." : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Не удалось подготовить ссылку установки. Проверь интернет-соединение и попробуй снова."
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

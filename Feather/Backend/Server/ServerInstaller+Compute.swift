@@ -38,29 +38,18 @@ extension ServerInstaller {
 		return comps.url!
 	}
 	
-	var externalServerLink: String {
-		let baseUrl = "https://api.palera.in/genPlist?bundleid=\(app.identifier!)&name=\(app.name!)&version=\(app.version!)&fetchurl=\(self.payloadEndpoint.absoluteString)"
-		let encodedBaseUrl = baseUrl.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)!
-		let finalEncodedUrl = encodedBaseUrl.addingPercentEncoding(withAllowedCharacters: .alphanumerics)!
-		
-		return finalEncodedUrl
-	}
+    var iTunesLink: String {
+        InstallationLinks.installURL(manifest: plistEndpoint).absoluteString
+    }
 
-	var iTunesLink: String {
-		_iTunesLink(with: plistEndpoint.absoluteString)
-	}
-	
-	var iTunesLinkExternal: String {
-		_iTunesLink(with: externalServerLink)
-	}
-	
-	private func _iTunesLink(with url: String) -> String {
-		return "itms-services://?action=download-manifest&url=\(url)"
-	}
+    var iTunesLinkExternal: String {
+        let url = manifestUrl ?? InstallationLinks.manifestURL(identifier: app.identifier ?? "", name: app.name ?? "", version: app.version ?? "1", payload: payloadEndpoint)
+        return InstallationLinks.installURL(manifest: url).absoluteString
+    }
 
 	var displayImageSmallEndpoint: URL {
 		var comps = URLComponents()
-		comps.scheme = "https"
+		comps.scheme = self.getServerMethod() == 1 ? "http" : "https"
 		comps.host = sni()
 		comps.path = "/app57x57.png"
 		comps.port = port
@@ -69,7 +58,7 @@ extension ServerInstaller {
 
 	var displayImageLargeEndpoint: URL {
 		var comps = URLComponents()
-		comps.scheme = "https"
+		comps.scheme = self.getServerMethod() == 1 ? "http" : "https"
 		comps.host = sni()
 		comps.path = "/app512x512.png"
 		comps.port = port

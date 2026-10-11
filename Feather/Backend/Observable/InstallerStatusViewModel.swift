@@ -24,7 +24,7 @@ extension InstallerStatusViewModel {
 	var statusLabel: String {
 		switch status {
 		case .none: .localized("Packaging")
-		case .ready: .localized("Ready")
+		case .ready: .localized("Waiting for installation")
 		case .sendingManifest: .localized("Sending Manifest")
 		case .sendingPayload: .localized("Sending Payload")
 		case .installing: .localized("Installing")

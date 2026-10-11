@@ -26,12 +26,18 @@ extension ServerInstaller {
 		let app = Application(Self.env)
 		app.threadPool = .init(numberOfThreads: 1)
 		
-		if getServerMethod() != 1 {
-			if let tls = try tls() {
-				app.http.server.configuration.tlsConfiguration = tls
-			}
-		}
-		
+        do {
+            if getServerMethod() != 1 {
+                guard let tls = try tls() else {
+                    throw installationError("Local SSL certificates are missing.")
+                }
+                app.http.server.configuration.tlsConfiguration = tls
+            }
+        } catch {
+            app.shutdown()
+            throw error
+        }
+
 		app.http.server.configuration.hostname = sni()
 		app.http.server.configuration.tcpNoDelay = true
 		app.http.server.configuration.address = .hostname("0.0.0.0", port: port)
@@ -47,9 +53,7 @@ extension ServerInstaller {
 		let localhost = "127.0.0.1"
 		
 		if getServerMethod() == 1 {
-			return !self.getIPFix()
-				? (Self.getLocalAddress() ?? localhost)
-				: localhost
+            return semiLocalHost()
 		} else {
 			return readCommonName() ?? localhost
 		}
@@ -78,8 +82,8 @@ extension ServerInstaller {
 			return nil
 		}
 		
-		return try? String(contentsOf: url, encoding: .utf8)
-			.trimmingCharacters(in: .whitespacesAndNewlines)
+        guard let name = try? String(contentsOf: url, encoding: .utf8) else { return nil }
+        return InstallationLinks.concreteHost(name)
 	}
 }
 
@@ -109,12 +113,19 @@ extension ServerInstaller {
 			var ptr = ifaddr
 			while ptr != nil {
 				let interface = ptr!.pointee
-				let addrFamily = interface.ifa_addr.pointee.sa_family
+                guard let interfaceAddress = interface.ifa_addr else {
+                    ptr = interface.ifa_next
+                    continue
+                }
+                let addrFamily = interfaceAddress.pointee.sa_family
 				
 				if addrFamily == UInt8(AF_INET) {
 					
 					let name = String(cString: interface.ifa_name)
-					if name == "en0" || name == "pdp_ip0" {
+					// A cellular interface address is not a LAN endpoint. On mobile
+                    // data (including IPv6-only networks), use loopback instead.
+                    if name == "en0", (interface.ifa_flags & UInt32(IFF_UP)) != 0,
+                       (interface.ifa_flags & UInt32(IFF_RUNNING)) != 0 {
 						
 						var hostname = [CChar](repeating: 0, count: Int(NI_MAXHOST))
 						if getnameinfo(interface.ifa_addr, socklen_t(interface.ifa_addr.pointee.sa_len),

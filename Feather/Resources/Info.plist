@@ -200,6 +200,8 @@
 	</array>
 <key>NSAppTransportSecurity</key>
 <dict>
+    <key>NSAllowsLocalNetworking</key>
+    <true/>
     <key>NSExceptionDomains</key>
     <dict>
         <key>claration.dev</key>

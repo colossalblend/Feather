@@ -134,7 +134,7 @@ struct AppBankUpdateView: View {
 				manager.install()
 			} label: {
 				NBSheetButton(
-					title: manager.isWorking ? (manager.stage ?? "Подготовка…") : (manager.hasPreparedUpdate ? "Повторить установку" : .localized("Download Update")),
+					title: manager.isWorking ? "Подготовка…" : (manager.isInstalling ? "Установка…" : (manager.hasPreparedUpdate ? "Повторить установку" : .localized("Download Update"))),
 					systemImage: "arrow.down.circle",
 					style: .prominent
 				)

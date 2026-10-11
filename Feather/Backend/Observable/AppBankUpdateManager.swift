@@ -154,7 +154,12 @@ final class AppBankUpdateManager: ObservableObject {
       switch status {
       case .sendingPayload: self.stage = "Передача обновления iOS…"
       case .installing: self.stage = "iOS получила файл. Ожидаем установки…"; self.isInstalling = true; self.watchdog?.cancel()
-      case .broken(let error): self.errorMessage = error.localizedDescription; self.isWorking = false; self.isInstalling = false
+      case .broken(let error):
+       self.errorMessage = error.localizedDescription; self.isWorking = false; self.isInstalling = false
+       self.watchdog?.cancel()
+       #if !targetEnvironment(macCatalyst)
+       BackgroundAudioManager.shared.stop()
+       #endif
       default: break
       }
      }
@@ -200,6 +205,10 @@ final class AppBankUpdateManager: ObservableObject {
    case .none, .sendingManifest:
     self.isInstalling = false
     self.stage = "Если установка не началась, повтори попытку."
+    self.subscription = nil; self.installer = nil
+    #if !targetEnvironment(macCatalyst)
+    BackgroundAudioManager.shared.stop()
+    #endif
    default: break
    }
   }

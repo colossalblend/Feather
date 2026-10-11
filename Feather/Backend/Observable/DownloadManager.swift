@@ -25,6 +25,7 @@ class Download: Identifiable, @unchecked Sendable {
 	
 	var task: URLSessionDownloadTask?
 	var resumeData: Data?
+	var resolutionTask: Task<Void, Never>?
 	
 	let id: String
 	let url: URL
@@ -80,7 +81,8 @@ class DownloadManager: NSObject, ObservableObject {
 	func startDownload(
 		from url: URL,
 		id: String = UUID().uuidString,
-		sourceProvenance: SourceAppProvenance? = nil
+		sourceProvenance: SourceAppProvenance? = nil,
+		gitURL: URL? = nil
 	) -> Download {
 		let requestHasSourceProvenance = sourceProvenance != nil
 		if let existingDownload = downloads.first(where: {
@@ -92,11 +94,23 @@ class DownloadManager: NSObject, ObservableObject {
 		
 		let download = Download(id: id, url: url, sourceProvenance: sourceProvenance)
 		
-		let task = _session.downloadTask(with: url)
-		download.task = task
-		task.resume()
-		
 		downloads.append(download)
+		if let gitURL = gitURL ?? sourceProvenance?.sourceAppGitDownloadURL {
+			download.resolutionTask = Task { @MainActor [weak self, weak download] in
+				let reachable = await GitHubAvailability.shared.check()
+				guard !Task.isCancelled, let self, let download,
+					self.downloads.contains(where: { $0 === download }) else { return }
+				download.resolutionTask = nil
+				let selectedURL = reachable ? gitURL : url
+				let task = self._session.downloadTask(with: selectedURL)
+				download.task = task
+				task.resume()
+			}
+		} else {
+			let task = _session.downloadTask(with: url)
+			download.task = task
+			task.resume()
+		}
 		
 		#if !targetEnvironment(macCatalyst)
 		if #available(iOS 26.0, *) {
@@ -124,6 +138,7 @@ class DownloadManager: NSObject, ObservableObject {
 	}
 	
 	func resumeDownload(_ download: Download) {
+		guard download.resolutionTask == nil else { return }
 		if let resumeData = download.resumeData {
 			let task = _session.downloadTask(withResumeData: resumeData)
 			download.task = task
@@ -144,6 +159,8 @@ class DownloadManager: NSObject, ObservableObject {
 	}
 	
 	func cancelDownload(_ download: Download) {
+		download.resolutionTask?.cancel()
+		download.resolutionTask = nil
 		download.task?.cancel()
 		
 		if let index = downloads.firstIndex(where: { $0.id == download.id }) {

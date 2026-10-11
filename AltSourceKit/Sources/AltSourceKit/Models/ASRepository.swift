@@ -162,6 +162,7 @@ extension ASRepository {
 		public var versionDescription: String?
 
 		public var downloadURL: URL?
+		public var gitDownloadURL: URL?
 
 		public var localizedDescription: String?
 
@@ -254,7 +255,8 @@ extension ASRepository {
 				forKey: .versionDescription
 			)
 
-			self.downloadURL = try container.decodeIfPresent(URL.self, forKey: .downloadURL)
+			self.downloadURL = container.downloadURL(forKeys: [.downloadURL, .capitalDownloadURL])
+			self.gitDownloadURL = container.downloadURL(forKeys: [.gitDownloadURL, .capitalGitDownloadURL])
 
 			self.localizedDescription =
 				try container.decodeIfPresent(
@@ -357,6 +359,9 @@ extension ASRepository {
 			case versions, version, versionDate, date, versionDescription, downloadURL,
 			     localizedDescription, iconURL, tintColor, size, category, beta
 			case originalIconURL = "OriginalIcon"
+			case capitalDownloadURL = "DownloadURL"
+			case gitDownloadURL = "downloadURL-git"
+			case capitalGitDownloadURL = "DownloadURL-git"
 			case permissions, appPermissions
 			case screenshots, screenshotURLs
 			case marketplaceID
@@ -385,6 +390,10 @@ extension ASRepository {
 		public var currentDownloadUrl: URL? {
 			currentAppVersion?.downloadURL ?? downloadURL
 		}
+
+		public var currentGitDownloadUrl: URL? {
+			currentAppVersion?.gitDownloadURL ?? gitDownloadURL
+		}
 		
 		public var currentDate: DateParsed? {
 			currentAppVersion?.date ?? versionDate ?? date
@@ -406,6 +415,7 @@ extension ASRepository {
 			public var date: DateParsed?
 			public var localizedDescription: String?
 			public var downloadURL: URL?
+			public var gitDownloadURL: URL?
 			public var size: UInt?
 			public var minOSVersion: OSVersion?
 
@@ -425,10 +435,8 @@ extension ASRepository {
 						String.self,
 						forKey: .localizedDescription
 					)
-				self.downloadURL = try container.decodeIfPresent(
-					URL.self,
-					forKey: .downloadURL
-				)
+				self.downloadURL = container.downloadURL(forKeys: [.downloadURL, .capitalDownloadURL])
+				self.gitDownloadURL = container.downloadURL(forKeys: [.gitDownloadURL, .capitalGitDownloadURL])
 				self.size =
 					(try? container.decodeIfPresent(UInt.self, forKey: .size))
 						?? (try? container.decodeIfPresent(String.self, forKey: .size))
@@ -448,6 +456,9 @@ extension ASRepository {
 				case version
 				case build = "buildVersion"
 				case date, localizedDescription, downloadURL, size, minOSVersion
+				case capitalDownloadURL = "DownloadURL"
+				case gitDownloadURL = "downloadURL-git"
+				case capitalGitDownloadURL = "DownloadURL-git"
 			}
 		}
 	}

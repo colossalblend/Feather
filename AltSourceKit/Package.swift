@@ -6,6 +6,7 @@ import PackageDescription
 let package = Package(
 	name: "AltSourceKit",
 	platforms: [
+		.macOS(.v12),
 		.iOS(.v14),
 		.tvOS(.v14),
 		.custom("xros", versionString: "1.3")
@@ -21,6 +22,7 @@ let package = Package(
 		// Targets can depend on other targets in this package and products from dependencies.
 		.target(
 			name: "AltSourceKit"),
+		.testTarget(name: "AltSourceKitTests", dependencies: ["AltSourceKit"]),
 
 	]
 )

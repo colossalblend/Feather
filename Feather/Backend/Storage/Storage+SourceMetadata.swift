@@ -18,6 +18,7 @@ struct SourceAppProvenance: Equatable {
 	let sourceAppVersion: String?
 	let sourceAppVersionDate: Date?
 	let sourceAppDownloadURL: URL?
+	let sourceAppGitDownloadURL: URL?
 	
 	var sourceVersionID: String {
 		[
@@ -59,6 +60,13 @@ extension SourceAppProvenance {
 		self.sourceAppVersion = appVersion
 		self.sourceAppVersionDate = appVersionDate
 		self.sourceAppDownloadURL = appDownloadURL
+		// An explicitly selected old version uses only its own GitHub link;
+		// never install the latest IPA instead of the version the user chose.
+		if let version {
+			self.sourceAppGitDownloadURL = version.gitDownloadURL
+		} else {
+			self.sourceAppGitDownloadURL = app.currentGitDownloadUrl
+		}
 	}
 }
 

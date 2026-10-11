@@ -10,6 +10,12 @@ Preserves the AppBank catalog, certificate import names, Russian translation and
 - Opens itms-services directly with Safari fallback; provides Retry and explicit waiting/error status.
 - Polls installation progress every 250 ms instead of every 1 ms.
 
+## Repository download routing
+
+At launch, a background HTTPS HEAD request to `https://github.com/` checks availability with a 3-second timeout and no HTTP cache. A successful GitHub response selects `downloadURL-git` / `DownloadURL-git`; otherwise the regular `downloadURL` / `DownloadURL` is used. The result is shared for this application launch. Missing or invalid optional GitHub URLs preserve legacy behaviour. Both application-level and version-level links are supported. Older versions never inherit the latest version's GitHub link. Cancellation while the check is pending cannot start a download afterwards. Source metadata keeps the canonical repository URL, regardless of which mirror was used.
+
+Model regression cases are in `AltSourceKit/Tests/AltSourceKitTests/DownloadURLTests.swift` and can be run on macOS using `swift test --package-path AltSourceKit`. No IPA build is needed for these tests.
+
 ## Attribution
 
 Server self-check, manifest validation and direct handoff are adapted from [RyukSign](https://github.com/faroukbmiled/RyukSign), commit 844466cee6f212291913ba5216f8f19a9c016dea, created by Ryuk, GPL-3.0. Feather is created by claration. Existing copyright notices and licenses are preserved.

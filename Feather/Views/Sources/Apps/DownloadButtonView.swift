@@ -46,7 +46,8 @@ struct DownloadButtonView: View {
 						_ = downloadManager.startDownload(
 							from: url,
 							id: app.currentUniqueId,
-							sourceProvenance: _sourceProvenance()
+							sourceProvenance: _sourceProvenance(),
+							gitURL: app.currentGitDownloadUrl
 						)
 					}
 				} label: {

@@ -320,7 +320,8 @@ extension SourceAppsTableRepresentableView { class Coordinator: NSObject, UITabl
 								repository: entry.source,
 								app: entry.app,
 								version: version
-							)
+							),
+							gitURL: version == nil ? entry.app.currentGitDownloadUrl : version?.gitDownloadURL
 						)
 					}
 				}, image: UIImage(systemName: "arrow.down"))

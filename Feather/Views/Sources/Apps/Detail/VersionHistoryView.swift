@@ -39,7 +39,8 @@ struct VersionHistoryView: View {
 										repository: source,
 										app: app,
 										version: version
-									)
+									),
+									gitURL: version.gitDownloadURL
 								)
 								dismiss()
 							} label: {

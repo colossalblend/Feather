@@ -28,6 +28,7 @@ struct FeatherApp: App {
 	private static let _appBankSeededKey = "AppBank.sourceSeeded"
 	
 	init() {
+		Task { _ = await GitHubAvailability.shared.check() }
 		_seedAppBankSource()
 	}
 	

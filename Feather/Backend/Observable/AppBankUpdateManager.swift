@@ -71,6 +71,9 @@ final class AppBankUpdateManager: ObservableObject {
  func install() {
   guard let update = available, !isWorking, !isInstalling else { return }
   isWorking = true
+  #if !targetEnvironment(macCatalyst)
+  BackgroundAudioManager.shared.start()
+  #endif
   errorMessage = nil
   Task {
    do {
@@ -223,6 +226,13 @@ final class AppBankUpdateManager: ObservableObject {
   let success = Zsign.sign(appPath: app.path, provisionPath: profile.path, p12Path: p12.path, p12Password: password, removeProvision: true) { _, error in signingError = error }
   if let signingError { throw signingError }
   guard success, FileManager.default.fileExists(atPath: app.appendingPathComponent("embedded.mobileprovision").path) else { throw AppBankUpdateError.message("Не удалось подписать обновление.") }
+  let profileData = try Data(contentsOf: app.appendingPathComponent("embedded.mobileprovision"))
+  let resources = try PropertyListSerialization.propertyList(from: Data(contentsOf: app.appendingPathComponent("_CodeSignature/CodeResources")), format: nil) as? [String: Any]
+  let files = resources?["files2"] as? [String: Any]
+  let sealed = files?["embedded.mobileprovision"] as? [String: Any]
+  guard let profileHash = sealed?["hash2"] as? Data, profileHash == Data(SHA256.hash(data: profileData)) else {
+   throw AppBankUpdateError.message("Подпись профиля обновления некорректна. Установка остановлена.")
+  }
   let archive = work.appendingPathComponent("Signed.zip")
   try Zip.zipFiles(paths: [payload], zipFilePath: archive, password: nil, compression: .DefaultCompression, progress: nil)
   try? FileManager.default.removeItem(at: destination)

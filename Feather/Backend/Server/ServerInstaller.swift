@@ -30,6 +30,7 @@ class ServerInstaller: Identifiable, ObservableObject {
 	var app: AppInfoPresentable
 	@ObservedObject var viewModel: InstallerStatusViewModel
 	private var _server: Application?
+	private let _payloadCoverage = PayloadCoverage()
 
 	init(app: AppInfoPresentable, viewModel: InstallerStatusViewModel) throws {
 		self.app = app
@@ -143,14 +144,18 @@ class ServerInstaller: Identifiable, ObservableObject {
 					return Response(status: .notFound)
 				}
 				
-				self._updateStatus(.sendingPayload)
+				if !self._payloadCoverage.isComplete { self._updateStatus(.sendingPayload) }
+				let range = req.headers.first(name: .range)
+				let size = (try? FileManager.default.attributesOfItem(atPath: packageUrl.path)[.size] as? NSNumber)?.int64Value ?? 0
 				
 				return req.fileio.streamFile(
 					at: packageUrl.path
 				) { result in
 					switch result {
 					case .success:
-						self._updateStatus(.installing)
+						if self._payloadCoverage.record(rangeHeader: range, size: size) {
+							self._updateStatus(.installing)
+						}
 					case .failure(let error):
 						self._updateStatus(.broken(error))
 					}

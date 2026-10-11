@@ -18,11 +18,11 @@ struct AppBankBackupView: View {
  var body: some View {
   Form {
    Section {
-    Button("Сохранить резервную копию", systemImage: "square.and.arrow.up") {
+    Button {
      do { document = AppBankBackupDocument(data: try Data(contentsOf: AppBankBackup.create())); exporting = true }
      catch { show(error.localizedDescription) }
-    }
-    Button("Восстановить из файла", systemImage: "square.and.arrow.down") { importing = true }
+    } label: { Label("Сохранить резервную копию", systemImage: "square.and.arrow.up") }
+    Button { importing = true } label: { Label("Восстановить из файла", systemImage: "square.and.arrow.down") }
    } footer: {
     Text("Сохраняются настройки и список источников. Сертификаты и файлы приложений в копию не входят. При восстановлении источники добавляются к существующим; настройки заменяются настройками из файла.")
    }

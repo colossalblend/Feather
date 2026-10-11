@@ -29,6 +29,7 @@ struct FeatherApp: App {
 	
 	init() {
 		Task { _ = await GitHubAvailability.shared.check() }
+		_ = Storage.shared.selectedCertificate()
 		_seedAppBankSource()
 	}
 	

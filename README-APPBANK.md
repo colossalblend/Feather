@@ -8,7 +8,7 @@ Preserves the AppBank catalog, certificate import names, Russian translation and
 - Handles server startup errors, missing SSL files and wildcard SSL hostnames.
 - Encodes nested installation URLs correctly for names containing special characters.
 - Opens itms-services directly with Safari fallback; provides Retry and explicit waiting/error status.
-- Polls installation progress every 250 ms instead of every 1 ms. Unavailable progress no longer implies completion.
+- Polls installation progress every 250 ms instead of every 1 ms.
 
 ## Attribution
 

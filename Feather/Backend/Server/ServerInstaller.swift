@@ -13,6 +13,7 @@ import NIOSSL
 import NIOTLS
 import SwiftUI
 import IDeviceSwift
+import NimbleExtensions
 
 // MARK: - Class
 class ServerInstaller: Identifiable, ObservableObject {

@@ -232,6 +232,9 @@ struct InstallPreviewView: View {
 		guard !isPreparingInstall else { return }
 		isPreparingInstall = true
 		defer { isPreparingInstall = false }
+		#if !targetEnvironment(macCatalyst)
+		BackgroundAudioManager.shared.start()
+		#endif
 		viewModel.status = .none
 		do {
 			try await installer.prepare()
@@ -291,8 +294,7 @@ struct InstallPreviewView: View {
 			var hasStarted = false
 
 			while !Task.isCancelled {
-				let observedProgress = await UIApplication.installProgress(for: bundleID)
-				let rawProgress = observedProgress ?? 0.0
+				let rawProgress = await UIApplication.installProgress(for: bundleID) ?? 0.0
 
 				if rawProgress > 0 {
 					hasStarted = true
@@ -308,7 +310,7 @@ struct InstallPreviewView: View {
 					viewModel.installProgress = progress
 				}
 
-				if hasStarted && observedProgress == 0 {
+				if hasStarted && rawProgress == 0 {
 					await MainActor.run {
 						viewModel.installProgress = 1.0
 						viewModel.status = .completed(.success(()))

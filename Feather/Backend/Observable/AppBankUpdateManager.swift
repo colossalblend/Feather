@@ -4,7 +4,6 @@ import SwiftUI
 import CryptoKit
 import Zip
 import ZsignSwift
-import Combine
 import IDeviceSwift
 
 struct AppBankUpdate: Equatable {
@@ -28,11 +27,9 @@ final class AppBankUpdateManager: ObservableObject {
  @Published private(set) var stage: String?
  @Published private(set) var errorMessage: String?
  @Published private(set) var hasPreparedUpdate = false
+ @Published private(set) var preparedUpdateURL: URL?
+ var usesExternalInstaller: Bool { UserDefaults.standard.integer(forKey: "Feather.installationMethod") != 1 }
  private var shownBuild: String?
- // The singleton keeps the local server alive independently of the update sheet.
- private var installer: ServerInstaller?
- private var subscription: AnyCancellable?
- private var watchdog: Task<Void, Never>?
  private let cache = FileManager.default.urls(for: .applicationSupportDirectory, in: .userDomainMask)[0].appendingPathComponent("AppBankUpdate", isDirectory: true)
  private let endpoint = URL(string: "https://cert.appbank.pw/feather_update.php?mode=local")!
  private init() {
@@ -57,8 +54,10 @@ final class AppBankUpdateManager: ObservableObject {
    try release.validate()
    guard release.build != Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
     available = nil
+    preparedUpdateURL = nil
     return .upToDate
    }
+   if available?.release != release { preparedUpdateURL = nil }
    available = AppBankUpdate(release: release)
    if presenting, manual || shownBuild != release.build {
     shownBuild = release.build
@@ -75,6 +74,7 @@ final class AppBankUpdateManager: ObservableObject {
   BackgroundAudioManager.shared.start()
   #endif
   errorMessage = nil
+  preparedUpdateURL = nil
   Task {
    do {
     guard let cert = Storage.shared.selectedCertificate(), let uuid = cert.uuid,
@@ -107,7 +107,6 @@ final class AppBankUpdateManager: ObservableObject {
     let expected = ["build": update.build, "certificate": fingerprint, "source": update.release.sha256, "bundle": Bundle.main.bundleIdentifier ?? ""]
     let cached = (try? Data(contentsOf: marker)).flatMap { try? JSONDecoder().decode([String: String].self, from: $0) }
     if cached != expected || !FileManager.default.fileExists(atPath: ipa.path) {
-     subscription = nil; installer = nil
      hasPreparedUpdate = false
      try? FileManager.default.removeItem(at: marker)
      try FileManager.default.createDirectory(at: cache, withIntermediateDirectories: true)
@@ -144,30 +143,13 @@ final class AppBankUpdateManager: ObservableObject {
      let proxy = InstallationProxy(viewModel: viewModel)
      try await proxy.install(at: ipa, suspend: true)
     } else {
-     let model = UpdateApp(name: Bundle.main.name, version: update.version, identifier: Bundle.main.bundleIdentifier)
-     let viewModel = InstallerStatusViewModel(isIdevice: false)
-     let server = try ServerInstaller(app: model, viewModel: viewModel)
-     server.packageUrl = ipa
-     installer = server
-     subscription = viewModel.$status.receive(on: DispatchQueue.main).sink { [weak self] status in
-      guard let self else { return }
-      switch status {
-      case .sendingPayload: self.stage = "Передача обновления iOS…"
-      case .installing: self.stage = "iOS получила файл. Ожидаем установки…"; self.isInstalling = true; self.watchdog?.cancel()
-      case .broken(let error):
-       self.errorMessage = error.localizedDescription; self.isWorking = false; self.isInstalling = false
-       self.watchdog?.cancel()
-       #if !targetEnvironment(macCatalyst)
-       BackgroundAudioManager.shared.stop()
-       #endif
-      default: break
-      }
-     }
+     // An in-place OTA replacement may kill Feather and its local server.
+     // Hand the signed file to another process instead of hosting it ourselves.
+     preparedUpdateURL = ipa
+     stage = "Обновление подписано. Передай IPA в другой установщик и установи поверх Feather с тем же идентификатором. Feather удалять не нужно."
      #if !targetEnvironment(macCatalyst)
-     BackgroundAudioManager.shared.start()
+     BackgroundAudioManager.shared.stop()
      #endif
-     try await server.prepare()
-     try await openInstaller(server)
     }
     isWorking = false
    } catch {
@@ -178,38 +160,6 @@ final class AppBankUpdateManager: ObservableObject {
     #if !targetEnvironment(macCatalyst)
     BackgroundAudioManager.shared.stop()
     #endif
-   }
-  }
- }
-
- private func openInstaller(_ server: ServerInstaller) async throws {
-  let link = server.getServerMethod() == 0 ? server.iTunesLink : server.iTunesLinkExternal
-  guard let url = URL(string: link) else { throw AppBankUpdateError.message("Не удалось подготовить ссылку установки.") }
-  let opened = await UIApplication.shared.open(url)
-  guard opened else { throw AppBankUpdateError.message("iOS не открыла установку. Повтори попытку.") }
-  isInstalling = true
-  stage = "Подтверди установку в системном окне."
-  watchdog?.cancel()
-  watchdog = Task { [weak self] in
-   try? await Task.sleep(nanoseconds: 20_000_000_000)
-   guard !Task.isCancelled, let self else { return }
-   if server.getServerMethod() == 0, UIApplication.shared.applicationState == .active,
-    case .none = server.viewModel.status {
-    do {
-     if try await server.recoverToSemiLocal() { try await self.openInstaller(server); return }
-    } catch { self.errorMessage = error.localizedDescription; self.isInstalling = false; return }
-   }
-   try? await Task.sleep(nanoseconds: 40_000_000_000)
-   guard !Task.isCancelled else { return }
-   switch server.viewModel.status {
-   case .none, .sendingManifest:
-    self.isInstalling = false
-    self.stage = "Если установка не началась, повтори попытку."
-    self.subscription = nil; self.installer = nil
-    #if !targetEnvironment(macCatalyst)
-    BackgroundAudioManager.shared.stop()
-    #endif
-   default: break
    }
   }
  }
@@ -247,15 +197,4 @@ final class AppBankUpdateManager: ObservableObject {
   try? FileManager.default.removeItem(at: destination)
   try FileManager.default.moveItem(at: archive, to: destination)
  }
-}
-
-private struct UpdateApp: AppInfoPresentable {
- let name: String?
- let version: String?
- let identifier: String?
- var date: Date? { nil }
- var icon: String? { nil }
- var uuid: String? { nil }
- var source: URL? { nil }
- var isSigned: Bool { true }
 }

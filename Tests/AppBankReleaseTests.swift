@@ -24,6 +24,15 @@ struct ReleaseTests {
   fails { try release().validateBundle(info) }
   info["CFBundleIdentifier"] = "thewonderofyou.Feather"; info["CFBundleShortVersionString"] = "2.9.0"
   fails { try release().validateBundle(info) }
-  print("12 release validation checks passed")
+  let suite = "AppBankUpdateTests." + UUID().uuidString
+  let defaults = UserDefaults(suiteName: suite)!
+  defer { defaults.removePersistentDomain(forName: suite) }
+  precondition(AppBankUpdatePreferences.shouldCheck(manual: false, defaults: defaults))
+  defaults.set(false, forKey: AppBankUpdatePreferences.automaticKey)
+  precondition(!AppBankUpdatePreferences.shouldCheck(manual: false, defaults: defaults))
+  precondition(AppBankUpdatePreferences.shouldCheck(manual: true, defaults: defaults))
+  defaults.set(true, forKey: AppBankUpdatePreferences.automaticKey)
+  precondition(AppBankUpdatePreferences.shouldCheck(manual: false, defaults: defaults))
+  print("12 release validation and 4 update preference checks passed")
  }
 }

@@ -13,6 +13,7 @@ import IDeviceSwift
 
 // MARK: - View
 struct SettingsView: View {
+	@AppStorage(AppBankUpdatePreferences.automaticKey) private var _automaticUpdates = true
 	@AppStorage("feather.selectedCertUUID") private var _storedSelectedCertUUID: String = ""
 	@State private var _currentIcon: String? = UIApplication.shared.alternateIconName
 	@StateObject private var _updates = AppBankUpdateManager.shared
@@ -107,6 +108,7 @@ extension SettingsView {
 	@ViewBuilder
 	private func _updatesSection() -> some View {
 		Section {
+			Toggle("Автоматически проверять обновления", isOn: $_automaticUpdates)
 			Button {
 				Task { await _checkForUpdates() }
 			} label: {

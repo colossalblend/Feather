@@ -43,6 +43,7 @@ final class AppBankUpdateManager: ObservableObject {
  @discardableResult
  func check(presenting: Bool = true, manual: Bool = false) async -> AppBankUpdateOutcome {
   guard !isChecking, !isWorking else { return .unavailable }
+  guard AppBankUpdatePreferences.shouldCheck(manual: manual) else { return .unavailable }
   isChecking = true
   defer { isChecking = false }
   do {
@@ -52,6 +53,7 @@ final class AppBankUpdateManager: ObservableObject {
    guard (response as? HTTPURLResponse)?.statusCode == 200 else { return .unavailable }
    let release = try JSONDecoder().decode(AppBankRelease.self, from: data)
    try release.validate()
+   guard AppBankUpdatePreferences.shouldCheck(manual: manual) else { return .unavailable }
    guard release.build != Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else {
     available = nil
     preparedUpdateURL = nil

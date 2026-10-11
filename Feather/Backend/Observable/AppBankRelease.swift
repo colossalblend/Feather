@@ -1,5 +1,12 @@
 import Foundation
 
+enum AppBankUpdatePreferences {
+ static let automaticKey = "Feather.automaticUpdateChecks"
+ static func shouldCheck(manual: Bool, defaults: UserDefaults = .standard) -> Bool {
+  manual || (defaults.object(forKey: automaticKey) as? Bool ?? true)
+ }
+}
+
 struct AppBankRelease: Decodable, Equatable {
  let build: String
  let version: String

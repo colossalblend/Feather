@@ -3,7 +3,7 @@ import CoreData
 
 @MainActor
 enum AppBankBackup {
- static let keys: Set<String> = ["Feather.userInterfaceStyle", "Feather.shouldTintIcons", "Feather.shouldChangeIconsBasedOffStyle", "Feather.storeCellAppearance", "Feather.userTintColor", "Feather.compressionLevel", "Feather.useShareSheetForArchiving", "Feather.installationMethod", "Feather.ipFix", "Feather.serverMethod", "signing_options"]
+ static let keys: Set<String> = ["Feather.userInterfaceStyle", "Feather.shouldTintIcons", "Feather.shouldChangeIconsBasedOffStyle", "Feather.storeCellAppearance", "Feather.userTintColor", "Feather.compressionLevel", "Feather.useShareSheetForArchiving", "Feather.installationMethod", "Feather.ipFix", "Feather.serverMethod", AppBankUpdatePreferences.automaticKey, "signing_options"]
  static var location: URL { FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)[0].appendingPathComponent("AppBank-Backup.plist") }
  static func create() throws -> URL {
   let settings = UserDefaults.standard.dictionaryRepresentation().filter { keys.contains($0.key) }

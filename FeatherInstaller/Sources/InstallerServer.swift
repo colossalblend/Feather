@@ -64,7 +64,7 @@ final class InstallerServer {
    guard (response as? HTTPURLResponse)?.statusCode == 200 else { throw HandoffError.invalid }
    manifest = URL(string: "https://\(host):\(port)/manifest.plist")!
   } catch {
-   app?.server.shutdown(); app?.shutdown(); app = nil
+   await app?.server.shutdown(); app?.shutdown(); app = nil
    port = Int.random(in: 20000...50000)
    try start(secure: false)
    for endpoint in ["https://ryuksign-install.ryuksign.workers.dev/genPlist", "https://api.palera.in/genPlist"] {

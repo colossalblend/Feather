@@ -5,6 +5,11 @@ name: Build fork
 
 on:
   workflow_dispatch:
+    inputs:
+      installer_only:
+        description: Build only Installer when the main IPA is already available
+        type: boolean
+        default: false
 
 jobs:
   build:
@@ -42,11 +47,13 @@ jobs:
         run: swift test --package-path AltSourceKit
 
       - name: Compile Feather
+        if: ${{ !inputs.installer_only }}
         run: |
           agvtool new-version -all $(git rev-parse --short HEAD)
           make iphoneos
 
       - name: Upload ipa
+        if: ${{ !inputs.installer_only }}
         uses: actions/upload-artifact@v4
         with:
           name: Feather-ipa
@@ -64,6 +71,7 @@ jobs:
           cp -R /tmp/FeatherInstaller/Build/Products/Release-iphoneos/FeatherInstaller.app /tmp/InstallerPackage/Payload/
           cp ../deps/* /tmp/InstallerPackage/Payload/FeatherInstaller.app/
           codesign --force --sign - --timestamp=none /tmp/InstallerPackage/Payload/FeatherInstaller.app
+          mkdir -p ../packages
           ditto -c -k --sequesterRsrc --keepParent /tmp/InstallerPackage/Payload ../packages/FeatherInstaller.ipa
 
       - name: Upload Installer

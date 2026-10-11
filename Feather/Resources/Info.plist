@@ -124,6 +124,7 @@
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>localdevvpn</string>
+		<string>appbank-feather-installer</string>
 	</array>
 	<key>UIBackgroundModes</key>
 	<array>

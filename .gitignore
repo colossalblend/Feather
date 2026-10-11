@@ -6,3 +6,6 @@ xcuserdata/
 deps
 cert.json
 _build
+FeatherInstaller/FeatherInstaller.xcodeproj/
+FeatherInstaller/Info.plist
+FeatherInstaller/Assets.xcassets/AppIcon.appiconset/Installer.png

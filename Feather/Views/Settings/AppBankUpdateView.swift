@@ -130,7 +130,7 @@ struct AppBankUpdateView: View {
 			if let error = manager.errorMessage {
 				Text(error).font(.footnote).foregroundStyle(.red).multilineTextAlignment(.center).fixedSize(horizontal: false, vertical: true)
 			}
-			if let ipa = manager.preparedUpdateURL {
+			if let ipa = manager.preparedUpdateURL, manager.errorMessage != nil {
 				ShareLink(item: ipa) {
 					NBSheetButton(title: "Передать IPA в установщик", systemImage: "square.and.arrow.up", style: .prominent)
 				}
@@ -142,7 +142,7 @@ struct AppBankUpdateView: View {
 				manager.install()
 			} label: {
 				NBSheetButton(
-						title: manager.isWorking ? "Подготовка…" : (manager.isInstalling ? "Установка…" : (manager.usesExternalInstaller ? "Подписать обновление" : (manager.hasPreparedUpdate ? "Повторить установку" : .localized("Download Update")))),
+						title: manager.isWorking ? "Подготовка…" : (manager.isInstalling ? "Установка…" : (manager.hasPreparedUpdate ? "Повторить установку" : "Обновить Feather")),
 					systemImage: "arrow.down.circle",
 					style: .prominent
 				)

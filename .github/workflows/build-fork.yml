@@ -33,6 +33,11 @@ jobs:
           swiftc Feather/Backend/Observable/AppBankRelease.swift Tests/AppBankReleaseTests.swift -o /tmp/feather-release-tests
           /tmp/feather-release-tests
 
+      - name: Test Installer handoff
+        run: |
+          swiftc Feather/Backend/Server/InstallerHandoff.swift Tests/InstallerHandoffTests.swift -o /tmp/feather-handoff-tests
+          /tmp/feather-handoff-tests
+
       - name: Test repository download URLs
         run: swift test --package-path AltSourceKit
 
@@ -46,4 +51,24 @@ jobs:
         with:
           name: Feather-ipa
           path: packages/Feather.ipa
+          if-no-files-found: error
+
+      - name: Compile minimal Installer
+        run: |
+          command -v xcodegen || brew install xcodegen
+          swift FeatherInstaller/make-icon.swift FeatherInstaller/Assets.xcassets/AppIcon.appiconset/Installer.png
+          cd FeatherInstaller
+          xcodegen generate
+          xcodebuild -project FeatherInstaller.xcodeproj -scheme FeatherInstaller -configuration Release -destination 'generic/platform=iOS' -derivedDataPath /tmp/FeatherInstaller CODE_SIGNING_ALLOWED=NO CURRENT_PROJECT_VERSION=$(git rev-parse --short HEAD)
+          mkdir -p /tmp/InstallerPackage/Payload
+          cp -R /tmp/FeatherInstaller/Build/Products/Release-iphoneos/FeatherInstaller.app /tmp/InstallerPackage/Payload/
+          cp ../deps/* /tmp/InstallerPackage/Payload/FeatherInstaller.app/
+          codesign --force --sign - --timestamp=none /tmp/InstallerPackage/Payload/FeatherInstaller.app
+          ditto -c -k --sequesterRsrc --keepParent /tmp/InstallerPackage/Payload ../packages/FeatherInstaller.ipa
+
+      - name: Upload Installer
+        uses: actions/upload-artifact@v4
+        with:
+          name: FeatherInstaller-ipa
+          path: packages/FeatherInstaller.ipa
           if-no-files-found: error

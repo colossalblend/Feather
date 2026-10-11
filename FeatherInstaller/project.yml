@@ -1,0 +1,49 @@
+name: FeatherInstaller
+options:
+  deploymentTarget:
+    iOS: '16.0'
+packages:
+  Vapor:
+    url: https://github.com/vapor/vapor
+    exactVersion: 4.104.0
+  Zip:
+    url: https://github.com/marmelroy/Zip
+    exactVersion: 2.1.2
+targets:
+  FeatherInstaller:
+    type: application
+    platform: iOS
+    sources:
+      - path: Sources
+      - path: ../Feather/Backend/Server/InstallerHandoff.swift
+      - path: ../Feather/Backend/Server/InstallationLinks.swift
+      - path: ../Feather/Backend/Server/PayloadCoverage.swift
+      - path: ../Feather/Utilities/BackgroundAudioManager.swift
+      - path: Assets.xcassets
+    dependencies:
+      - package: Vapor
+        product: Vapor
+      - package: Zip
+        product: Zip
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: pw.appbank.FeatherInstaller
+        MARKETING_VERSION: 1.0.0
+        CURRENT_PROJECT_VERSION: 1
+        SWIFT_VERSION: 5.0
+        TARGETED_DEVICE_FAMILY: '1,2'
+        ASSETCATALOG_COMPILER_APPICON_NAME: AppIcon
+        CODE_SIGNING_ALLOWED: NO
+    info:
+      path: Info.plist
+      properties:
+        CFBundleDisplayName: Feather Installer
+        CFBundleURLTypes:
+          - CFBundleURLSchemes: [appbank-feather-installer]
+            CFBundleURLName: pw.appbank.FeatherInstaller
+        UIBackgroundModes: [audio]
+        UILaunchScreen: {}
+        NSAppTransportSecurity:
+          NSAllowsArbitraryLoads: true
+        LSApplicationQueriesSchemes: [feather]
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
